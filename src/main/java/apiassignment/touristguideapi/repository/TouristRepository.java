@@ -42,13 +42,21 @@ public class TouristRepository {
 
     public TouristAttraction getAttractionByName (String name) {
         for (TouristAttraction t1 : touristAttractions) {
-            if (t1.getName().equalsIgnoreCase(name)) return t1;
+            if (t1.getName().equalsIgnoreCase(name))
+                return t1;
         }
-
         return null;
     }
 
-
+    public TouristAttraction removeAttraction(String name) {
+        for(TouristAttraction i : touristAttractions) {
+            if(i.getName().equalsIgnoreCase(name)) {
+                touristAttractions.remove(i);
+                return i;
+            }
+        }
+        return null;
+    }
 
 
 }

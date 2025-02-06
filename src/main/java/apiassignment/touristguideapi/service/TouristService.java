@@ -29,7 +29,10 @@ public class TouristService {
 
     public TouristAttraction renameAttraction (String name, String replacementName) {
         return touristRepository.renameAttraction(name, replacementName);
+    }
 
+    public TouristAttraction removeAttraction(String name) {
+        return touristRepository.removeAttraction(name);
     }
 
 
