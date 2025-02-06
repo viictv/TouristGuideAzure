@@ -19,7 +19,7 @@ private final TouristService touristService;
         this.touristService = touristService;
     }
 
-    @GetMapping("/attractions")
+    @GetMapping("")
     public ResponseEntity<List<TouristAttraction>> getAllAttractions() {
     List<TouristAttraction> t1 = touristService.getAllAttractions();
     return new ResponseEntity<>(t1, HttpStatus.OK);
@@ -38,8 +38,8 @@ private final TouristService touristService;
         }
 
     @PostMapping("/update")
-    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementname) {
-        TouristAttraction test = touristService.renameAttraction(name, replacementname);
+    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementName) {
+        TouristAttraction test = touristService.renameAttraction(name, replacementName);
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
