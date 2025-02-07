@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -47,6 +48,12 @@ private final TouristService touristService;
     public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
         TouristAttraction test = touristService.removeAttraction(name);
         return new ResponseEntity<>(test, HttpStatus.OK);
+    }
+
+    @GetMapping("/season/{season}")
+    public ResponseEntity<List<TouristAttraction>> getAttractionBySeason(@PathVariable String season) {
+        ArrayList<TouristAttraction> t1 = touristService.getAttractionBySeason(season);
+        return new ResponseEntity<>(t1, HttpStatus.OK);
     }
 
 

@@ -9,31 +9,86 @@
 
 <body>
 
-
-
 <nav class="navigationBar">
     <div class="navigation">
-    <h1 class="overskrift"> Tourist guide i Danmark </h1>
-<ul class ="navigationsLinks">
-    <li> Se alle attraktioner </li>
-    <li> Se en bestemt attraktion </li>
-    <li> Se en attraktion baseret på sæson </li>
-    <li> Slet en attraktion </li>
-</ul>
+        <h1 class="overskrift"> Tourist guide i Danmark </h1>
+        <ul class="navigationsLinks">
+            <li><a href="/attractions" target="_blank">Se alle attraktioner</a></li>
+            <div class="dropdown">
+                <button class="dropbtn"> Se en bestemt attraktion
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/attractions/Tivoli"> Tivoli </a>
+                    <a href="/attractions/SMK"> SMK </a>
+                    <a href="/attractions/Nyhavn"> Nyhavn </a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"> Se en attraktion baseret på sæson
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/attractions/season/sommer"> Sommer </a>
+                    <a href="/attractions/season/vinter"> Vinter </a>
+                    <a href="/attractions/season/helår"> Helår </a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"> Slet en attraktion
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#"> Tivoli </a>
+                    <a href="#"> SMK </a>
+                    <a href="#"> Nyhavn </a>
+                </div>
+            </div>
+        </ul>
 
-</div>
+    </div>
 </nav>
 
-<div class="imagesection">
-    <img src="istockphoto-587892190-612x612.jpg" alt="Photo of denmark">
+<section class="imagesection">
+    <img class ="startBillede" src="istockphoto-587892190-612x612.jpg" alt="Photo of denmark">
     <div class="center">
-    <h4> Velkommen til Danmarks bedste hjemmeside for tourister </h4>
-        <div class ="buttons">
-        <button type="button"> test  </button>
-        <button type="button"> test  </button>
+        <h4> Velkommen til Danmarks bedste hjemmeside for tourister </h4>
+        <div class="buttons">
+            <button type="button" class="knap"> test</button>
+            <button type="button" class="knap"> test</button>
+        </div>
+    </div>
+</section>
+
+    <div class="column">
+        <div class="Træting">
+            <a href="https://www.campadventure.dk/skovtaarnet/" target="_blank">
+                <img src="træting.jpg" alt="Træ ting">
+            </a>
+            <p> Tryk på billedet for at læse mere</p>
+        </div>
+        <div class="legoland">
+            <a href ="https://www.legoland.dk/" target ="_blank">
+                <img src="legoland.jpeg" alt ="Lego land">
+            </a>
+
+            <p> Tryk på billedet for at lære mere om Legoland</p>
+        </div>
+        <div class ="Tivoli">
+            <a href ="https://www.tivoli.dk/" target ="_blank">
+                <img src="Tivoli.jpg" alt ="Tivoli">
+            </a>
+
+            <p> Tryk på billedet for at se mere om Tivoli</p>
         </div>
     </div>
 
-</div>
+<footer class="ending">
+<ul class="Contact">
+    <li> Contact </li>
+    <li> Address </li>
+</ul>
+</footer>
+
 </body>
 </html>
