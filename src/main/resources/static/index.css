@@ -149,9 +149,31 @@ button:hover {
 
 .ending {
     background-color: cornflowerblue;
+
 }
 
 .Contact li {
     list-style: none;
     color: white;
+}
+
+.midtSection {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.billedeText {
+    margin-left: 20px;
+}
+
+.midtSection img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.ending {
+    height: 200px;
 }

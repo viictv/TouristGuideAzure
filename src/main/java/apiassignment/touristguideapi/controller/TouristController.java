@@ -5,6 +5,7 @@ import apiassignment.touristguideapi.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -54,6 +55,13 @@ private final TouristService touristService;
     public ResponseEntity<List<TouristAttraction>> getAttractionBySeason(@PathVariable String season) {
         ArrayList<TouristAttraction> t1 = touristService.getAttractionBySeason(season);
         return new ResponseEntity<>(t1, HttpStatus.OK);
+    }
+
+    @GetMapping("/test")
+    public String listAttactions(Model model) {
+        List<TouristAttraction> farvel = touristService.getAllAttractions();
+        model.addAttribute("attractions", farvel);
+        return "hej";
     }
 
 
