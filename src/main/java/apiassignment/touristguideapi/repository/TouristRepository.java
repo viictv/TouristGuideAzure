@@ -20,9 +20,9 @@ public class TouristRepository {
     }
 
     public void initAttractions() {
-        touristAttractions.add(new TouristAttraction("navn", "beskrivelse", "Sommer"));
-        touristAttractions.add(new TouristAttraction("navn2", "beskrivelse", "Sommer"));
-        touristAttractions.add(new TouristAttraction("navn3", "beskrivelse", "Sommer"));
+        touristAttractions.add(new TouristAttraction("Tivoli", "Varmeste forlystelse", "Sommer"));
+        touristAttractions.add(new TouristAttraction("SMK", "Very demur art", "Sommer"));
+        touristAttractions.add(new TouristAttraction("Nyhavn", "Majestic Aura place", "Sommer"));
     }
 
     public TouristAttraction addNewAttraction (TouristAttraction t1) {
@@ -42,13 +42,31 @@ public class TouristRepository {
 
     public TouristAttraction getAttractionByName (String name) {
         for (TouristAttraction t1 : touristAttractions) {
-            if (t1.getName().equalsIgnoreCase(name)) return t1;
+            if (t1.getName().equalsIgnoreCase(name))
+                return t1;
         }
-
         return null;
     }
 
+    public TouristAttraction removeAttraction(String name) {
+        for(TouristAttraction i : touristAttractions) {
+            if(i.getName().equalsIgnoreCase(name)) {
+                touristAttractions.remove(i);
+                return i;
+            }
+        }
+        return null;
+    }
 
+    public ArrayList<TouristAttraction> getAttractionBySeason(String season) {
+        ArrayList<TouristAttraction> newList = new ArrayList<>();
+        for(TouristAttraction t1 : touristAttractions) {
+            if(t1.getSeason().equalsIgnoreCase(season)) {
+                newList.add(t1);
+            }
+        }
+        return newList;
+    }
 
 
 }

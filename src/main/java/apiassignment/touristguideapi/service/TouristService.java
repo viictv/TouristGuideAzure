@@ -4,6 +4,7 @@ import apiassignment.touristguideapi.model.TouristAttraction;
 import apiassignment.touristguideapi.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,8 +30,13 @@ public class TouristService {
 
     public TouristAttraction renameAttraction (String name, String replacementName) {
         return touristRepository.renameAttraction(name, replacementName);
-
     }
 
+    public TouristAttraction removeAttraction(String name) {
+        return touristRepository.removeAttraction(name);
+    }
 
+    public ArrayList<TouristAttraction> getAttractionBySeason(String season) {
+        return touristRepository.getAttractionBySeason(season);
+    }
 }
