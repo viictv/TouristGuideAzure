@@ -175,5 +175,65 @@ button:hover {
 }
 
 .ending {
-    height: 200px;
+    background-color: cornflowerblue;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+    z-index: 9999;  /* Sæt høj z-index for at sikre, at footeren er øverst */
+    position: relative;  /* Sørg for at positioneringen gør det muligt at placere elementet over andre */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.contact-info, .footer-social {
+    width: 45%;
+    min-width: 200px;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.ending p {
+    color: white;
+}
+
+.ending h3 {
+    color: white;
+}
+
+.ending ul {
+    color: white;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.ending ul li {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.ending ul li strong {
+    color: white;
+}
+
+.ending a {
+    color: white;
+    text-decoration: none;
+}
+
+.ending a:hover {
+    color: #f1c40f;
 }
