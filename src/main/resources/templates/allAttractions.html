@@ -15,12 +15,16 @@
             <th scope="col">Description</th>
         </tr>
         </thead>
-        <tbody>
-        <tr th:each="i : ${attractions}">
-            <td th:text="${i.getName()}"/>
-            <td th:text="${i.getDescription()}"/>
-        </tr>
-        </tbody>
+
+        <div th:each="i : ${attractions}" class="attractionscontainer">
+            <h1 th:text="${i.getName()}"></h1>
+            <p th:text="${i.getDescription()}"></p>
+            <img th:src="@{${i.imgPath}}" class="imgbox" />
+        </div>
+
+
+
+        <td />
     </table>
     <h1>Hej</h1>
 </div>

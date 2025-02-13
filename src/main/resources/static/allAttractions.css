@@ -5,3 +5,13 @@ body {
     background: linear-gradient(135deg, #ff979e, #ffb397, #ffbf97, #ffde97);
     background-size: 400% 400%;
 }
+
+.attractionscontainer {
+    display: flex;
+    width: 500px;
+}
+
+.imgbox  {
+    object-fit: contain;
+    max-height: 300px;
+}
