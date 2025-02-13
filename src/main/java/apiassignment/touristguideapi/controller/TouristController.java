@@ -57,11 +57,17 @@ private final TouristService touristService;
         return new ResponseEntity<>(t1, HttpStatus.OK);
     }
 
-    @GetMapping("/test")
+    @GetMapping("/attractions/rediger")
+    public String redigerSite () {
+        return "rediger";
+    }
+
+
+    @GetMapping("/alle")
     public String listAttactions(Model model) {
         List<TouristAttraction> farvel = touristService.getAllAttractions();
         model.addAttribute("attractions", farvel);
-        return "hej";
+        return "allAttractions";
     }
 
 

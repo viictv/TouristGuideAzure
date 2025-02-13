@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <title>Tourist guide</title>
 </head>
-
-
 <body>
-
 <nav class="navigationBar">
-    <div class="navigation">
-        <h1 class="overskrift"> Tourist guide i Danmark </h1>
-        <ul class="navigationsLinks">
-            <li><a href="http://localhost:8080/attractions/test" target="_blank">Se alle attraktioner</a></li>
+    <a href="/"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
+    <div class="navcontent">
+        <a href="/attractions/alle" target="_blank">Se alle attraktioner</a>
+        <div class="container">
             <div class="dropdown">
                 <button class="dropbtn"> Se en bestemt attraktion
                     <i class="fa fa-caret-down"></i>
@@ -34,58 +32,47 @@
                     <a href="/attractions/season/helår"> Helår </a>
                 </div>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn"> Slet en attraktion
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#"> Tivoli </a>
-                    <a href="#"> SMK </a>
-                    <a href="#"> Nyhavn </a>
-                </div>
-            </div>
-        </ul>
+            <a href="/attractions/rediger">Rediger attraktion</a>
+        </div>
 
     </div>
 </nav>
 
-<section class="imagesection">
-    <img class ="startBillede" src="istockphoto-587892190-612x612.jpg" alt="Photo of denmark">
-    <div class="center">
-        <h4> Velkommen til Danmarks bedste hjemmeside for tourister </h4>
+<section class="coversection">
+    <img class ="startBillede" src="images/Copenhagen-Panorama.jpg" alt="Photo of denmark">
+        <h2 class="coverText"> Velkommen til Danmarks bedste side for turister </h2>
         <div class="buttons">
-            <button type="button" class="knap"> test</button>
-            <button type="button" class="knap"> test</button>
+            <!--<button type="button" class="knap"> test</button>
+            <button type="button" class="knap"> test</button>-->
         </div>
+</section>
+
+<h1>Tjek disse udvalgte seværdigheder ud!</h1>
+<section class="showcases">
+    <div class="showcaseContainer">
+        <a href="https://www.campadventure.dk/skovtaarnet/" target="_blank">
+            <h2>Skovtårnet</h2>
+            <img src="https://files.guidedanmark.org/files/444/219094_Skovtrnet_8.jpg?width=1920&height=960&format=webp&mode=crop" alt="Træ ting">
+        </a>
+    </div>
+    <div class="showcaseContainer">
+        <a href="https://www.legoland.dk/" target="_blank">
+            <h2>Legoland</h2>
+            <img src="https://www.legoland.dk/media/joclxhf1/136-legoland__k1a2849_final_1920x1080.jpg" alt="Lego land">
+        </a>
+    </div>
+    <div class="showcaseContainer">
+        <a href="https://www.tivoli.dk/" target="_blank">
+            <h2>Tivoli</h2>
+            <img src="https://wallpapercat.com/w/full/0/f/e/685597-2048x1152-desktop-hd-tivoli-gardens-wallpaper-image.jpg" alt="Tivoli">
+        </a>
     </div>
 </section>
 
-    <div class="column">
-        <div class="Træting">
-            <a href="https://www.campadventure.dk/skovtaarnet/" target="_blank">
-                <img src="træting.jpg" alt="Træ ting">
-            </a>
-            <p> Tryk på billedet for at læse mere</p>
-        </div>
-        <div class="legoland">
-            <a href ="https://www.legoland.dk/" target ="_blank">
-                <img src="legoland.jpeg" alt ="Lego land">
-            </a>
-
-            <p> Tryk på billedet for at lære mere om Legoland</p>
-        </div>
-        <div class ="Tivoli">
-            <a href ="https://www.tivoli.dk/" target ="_blank">
-                <img src="Tivoli.jpg" alt ="Tivoli">
-            </a>
-
-            <p> Tryk på billedet for at se mere om Tivoli</p>
-        </div>
-    </div>
 
 <div class="midtSection">
 
-    <img src="rosenborg.jpg" alt="Billede af rosenborg">
+    <img src="images/rosenborg.jpg" alt="Billede af rosenborg">
     <p class="billedeText">
         Danmark, et land fyldt med kulturarv og naturskønne oplevelser, byder på noget for enhver smag.
         <br>
@@ -100,24 +87,25 @@
     </p>
 </div>
 
-
-<footer class="ending">
-    <div class="footer-container">
-        <div class="contact-info">
-            <h3>Contact Us</h3>
-            <ul>
-                <li><strong>Address:</strong> 123 Travel St, City, Country</li>
-                <li><strong>Email:</strong> travelguide@email.com</li>
-                <li><strong>Phone:</strong> +123 456 789</li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <h3>Follow Us</h3>
-            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
-        </div>
+<footer class="footercontainer">
+    <div class="footersection">
+        <h3>Contact Us</h3>
+        <p><strong>Address: </strong> 123 Travel St, City, Country</p>
+        <p><strong>Email:</strong> travelguide@email.com</p>
+        <p><strong>Phone:</strong> +123 456 789</p>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Gruppe 8 Tourist Guide. All rights reserved.</p>
+    <div class="footersection">
+        <h3>Follow Us</h3>
+        <p>Facebook</p>
+        <p>Instagram</p>
+        <p>Twitter</p>
+    </div>
+    <div class="footersection">
+        <h3>Company</h3>
+        <p>About us</p>
+        <p>Blog</p>
+        <p>Partnerships</p>
+        <p>Careers</p>
     </div>
 </footer>
 

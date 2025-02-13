@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All attractions</title>
+    <link rel="stylesheet" th:href="@{/allAttractions.css}">
+</head>
+<body>
+<div class="section">
+    <h1> Liste over alle attraktioner</h1>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Attraction</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="i : ${attractions}">
+            <td th:text="${i.getName()}"/>
+            <td th:text="${i.getDescription()}"/>
+        </tr>
+        </tbody>
+    </table>
+    <h1>Hej</h1>
+</div>
+</body>
+</html>
