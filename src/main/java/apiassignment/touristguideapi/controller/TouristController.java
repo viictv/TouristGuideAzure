@@ -40,9 +40,9 @@ private final TouristService touristService;
         }
 
     @PostMapping("/attractions/update")
-    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementName) {
-        TouristAttraction test = touristService.renameAttraction(name, replacementName);
-        return new ResponseEntity<>(test, HttpStatus.OK);
+    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody TouristAttraction newTouristAttraction) {
+        TouristAttraction newTouristAttractionList = touristService.renameAttraction(newTouristAttraction);
+        return new ResponseEntity<>(newTouristAttractionList, HttpStatus.OK);
     }
 
     @PostMapping("/attractions/delete/{name}")

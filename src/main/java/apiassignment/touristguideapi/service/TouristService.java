@@ -28,8 +28,8 @@ public class TouristService {
         return touristRepository.addNewAttraction(t1);
     }
 
-    public TouristAttraction renameAttraction (String name, String replacementName) {
-        return touristRepository.renameAttraction(name, replacementName);
+    public TouristAttraction renameAttraction (TouristAttraction newTouristAttraction) {
+        return touristRepository.renameAttraction(newTouristAttraction);
     }
 
     public TouristAttraction removeAttraction(String name) {
