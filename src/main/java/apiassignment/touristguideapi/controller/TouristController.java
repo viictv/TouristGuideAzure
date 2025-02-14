@@ -44,9 +44,9 @@ private final TouristService touristService;
         }
 
     @PostMapping("/attractions/update")
-    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementName) {
-        TouristAttraction test = touristService.renameAttraction(name, replacementName);
-        return new ResponseEntity<>(test, HttpStatus.OK);
+    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody TouristAttraction newTouristAttraction) {
+        TouristAttraction newTouristAttractionList = touristService.renameAttraction(newTouristAttraction);
+        return new ResponseEntity<>(newTouristAttractionList, HttpStatus.OK);
     }
 
     @PostMapping("/attractions/delete/{name}")
@@ -76,6 +76,26 @@ private final TouristService touristService;
         return "allAttractions";
     }
 
+    @GetMapping("/attractions/seasons/sommer")
+    public String listAttractionsBySeasonSommer(Model model) {
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Sommer");
+        model.addAttribute("attractionsBySeason", t1);
+        return "sommerAttractions";
+    }
+
+    @GetMapping("/attractions/seasons/vinter")
+    public String listAttractionsBySeasonVinter(Model model) {
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Vinter");
+        model.addAttribute("attractionsBySeason", t1);
+        return "vinterAttractions";
+    }
+
+    @GetMapping("/attractions/seasons/helår")
+    public String listAttractionsBySeasonHelår(Model model) {
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Helår");
+        model.addAttribute("attractionsBySeason", t1);
+        return "helÅr";
+    }
 
     }
 
