@@ -28,9 +28,13 @@ private final TouristService touristService;
     }
 
     @GetMapping("/attractions/{name}")
-    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
-        TouristAttraction t1 = touristService.getAttractionByName(name);
-        return new ResponseEntity<>(t1,HttpStatus.OK);
+    public String getAttractionByName(@PathVariable String name, Model model) {
+        TouristAttraction attraction = touristService.getAttractionByName(name);
+        if (attraction != null) {
+            model.addAttribute("attraction", attraction);
+            return "attractionbyname";
+        }
+        return "error";
     }
 
     @PostMapping("/attractions/add")
@@ -58,7 +62,9 @@ private final TouristService touristService;
     }
 
     @GetMapping("/attractions/rediger")
-    public String redigerSite () {
+    public String redigerSite (Model model) {
+        List<TouristAttraction> attractions = touristService.getAllAttractions();
+        model.addAttribute("attractions", attractions);
         return "rediger";
     }
 

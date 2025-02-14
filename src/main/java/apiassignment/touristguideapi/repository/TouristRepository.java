@@ -20,9 +20,16 @@ public class TouristRepository {
     }
 
     public void initAttractions() {
-        touristAttractions.add(new TouristAttraction("Tivoli", "Varmeste forlystelse", "Sommer"));
-        touristAttractions.add(new TouristAttraction("SMK", "Very demur art", "Sommer"));
-        touristAttractions.add(new TouristAttraction("Nyhavn", "Majestic Aura place", "Helår"));
+      
+        touristAttractions.add(new TouristAttraction("Tivoli", "Tivoli er en af verdens ældste forlystelsesparker, beliggende i hjertet af København. Parken tilbyder en blanding af spændende forlystelser, smukke haver, koncerter og teaterforestillinger, hvilket gør det til et ideelt sted for både familier og turister, der ønsker en sjov og magisk oplevelse.", "Sommer", "/images/Tivoli.jpg"));
+        touristAttractions.add(new TouristAttraction("SMK", "Statens Museum for Kunst er Danmarks største kunstmuseum og huser en imponerende samling af både dansk og international kunst. Museet tilbyder værker fra renæssancen til moderne kunst og giver besøgende mulighed for at udforske både klassiske og nutidige kunstværker i smukke omgivelser.", "Sommer", "https://www.smk.dk/wp-content/uploads/2022/08/JoakimZuger03141-scaled-e1716369338667.jpg"));
+        touristAttractions.add(new TouristAttraction("Nyhavn", "Nyhavn er en ikonisk havn i København, kendt for sine farverige bygninger og livlige atmosfære. Området er fyldt med restauranter, barer og caféer, og det er et populært sted for både lokale og turister at nyde en afslappet middag eller tage en kanalrundfart i de charmerende både.", "Sommer", "/images/istockphoto-587892190-612x612.jpg"));
+        touristAttractions.add(new TouristAttraction("Legoland", "Legoland Billund er en fantastisk forlystelsespark, der byder på spændende oplevelser for både børn og voksne. Parken er kendt for sine imponerende LEGO-modeller, forlystelser og temazoner, der gør det til et sjovt og fantasifuldt sted for hele familien at udforske og nyde.", "Sommer", "https://www.legoland.dk/media/joclxhf1/136-legoland__k1a2849_final_1920x1080.jpg"));
+        touristAttractions.add(new TouristAttraction("Skovtårnet", "Skovtårnet er Danmarks højeste træbygning og tilbyder en spektakulær udsigt over Smålandskovene. Tårnet er en del af Camp Adventure Park og giver besøgende mulighed for at opleve naturen fra et nyt perspektiv, mens man går op ad en imponerende gangbro, der snor sig op til toppen af tårnet.", "Sommer", "https://files.guidedanmark.org/files/444/219094_Skovtrnet_8.jpg?width=1920&height=960&format=webp&mode=crop"));
+        touristAttractions.add(new TouristAttraction("BonBon-Land", "BonBon-Land er en farverig forlystelsespark i Danmark, kendt for sine sjove og kreative forlystelser, inspireret af det populære slikmærke. Parken tilbyder et væld af forlystelser, fra vilde rutsjebaner til tematiserede områder, der gør det til et underholdende sted for både børn og voksne.", "Sommer", "https://www.bonbonland.dk/content/dam/bbl/images/blog/Bedste%20rutchebane.jpg"));
+
+
+
     }
 
     public TouristAttraction addNewAttraction (TouristAttraction t1) {

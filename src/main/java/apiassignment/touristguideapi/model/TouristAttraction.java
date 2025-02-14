@@ -5,15 +5,13 @@ public class TouristAttraction {
     private String name;
     private String description;
     private String season;
+    private String imgPath;
 
-    public TouristAttraction(String name, String description, String season) {
+    public TouristAttraction(String name, String description, String season, String imgPath) {
         this.name = name;
         this.description = description;
         this.season = season;
-    }
-
-    public TouristAttraction() {
-
+        this.imgPath = imgPath;
     }
 
     public String getName() {
@@ -38,6 +36,14 @@ public class TouristAttraction {
 
     public void setSeason(String season) {
         this.season = season;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     @Override
