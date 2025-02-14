@@ -70,6 +70,26 @@ private final TouristService touristService;
         return "allAttractions";
     }
 
+    @GetMapping("/attractions/seasons/sommer")
+    public String listAttractionsBySeasonSommer(Model model) {
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Sommer");
+        model.addAttribute("attractionsBySeason", t1);
+        return "sommerAttractions";
+    }
+
+    @GetMapping("/attractions/seasons/vinter")
+    public String listAttractionsBySeasonVinter(Model model) {
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Vinter");
+        model.addAttribute("attractionsBySeason", t1);
+        return "vinterAttractions";
+    }
+
+    @GetMapping("/attractions/seasons/helår")
+    public String listAttractionsBySeasonHelår(Model model) {
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Helår");
+        model.addAttribute("attractionsBySeason", t1);
+        return "helÅr";
+    }
 
     }
 

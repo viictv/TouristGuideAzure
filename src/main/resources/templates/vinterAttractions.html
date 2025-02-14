@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vinter attraktioner</title>
+</head>
+<body>
+
+
+<h1> Her er det vinter attraktioner </h1>
+
+<div class="section">
+  <h1> Liste over alle attraktioner</h1>
+  <table>
+    <thead>
+    <tr>
+      <th scope="col">Attraction</th>
+      <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="i : ${attractionsBySeason}">
+      <td th:text="${i.getName()}"/>
+      <td th:text="${i.getDescription()}"/>
+    </tr>
+    </tbody>
+  </table>
+  <h1>Hej</h1>
+</div>
+</body>
+</html>

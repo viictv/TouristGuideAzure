@@ -22,7 +22,7 @@ public class TouristRepository {
     public void initAttractions() {
         touristAttractions.add(new TouristAttraction("Tivoli", "Varmeste forlystelse", "Sommer"));
         touristAttractions.add(new TouristAttraction("SMK", "Very demur art", "Sommer"));
-        touristAttractions.add(new TouristAttraction("Nyhavn", "Majestic Aura place", "Sommer"));
+        touristAttractions.add(new TouristAttraction("Nyhavn", "Majestic Aura place", "Helår"));
     }
 
     public TouristAttraction addNewAttraction (TouristAttraction t1) {
