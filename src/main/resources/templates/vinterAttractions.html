@@ -46,10 +46,12 @@
 
 <div class="section">
 
+  <h1 class="title" th:if="${#lists.isEmpty(attractionsBySeason)}">Der er ingen attraktioner om vinteren</h1>
   <div th:each="i : ${attractionsBySeason}" class="allattractionscontainer">
     <h1 th:text="${i.getName()}"></h1>
     <img th:src="@{${i.imgPath}}" class="imgbox" />
     <p th:text="${i.getDescription()}" class="description"></p>
+
   </div>
 
 </div>
