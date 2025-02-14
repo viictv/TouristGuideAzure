@@ -14,10 +14,6 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
-    public TouristAttraction() {
-
-    }
-
     public String getName() {
         return name;
     }

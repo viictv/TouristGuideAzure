@@ -93,18 +93,6 @@ body {
     white-space: nowrap;
 }
 
-
-.knap {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: 2px solid cornflowerblue;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    border-radius: 10px;
-    margin: 10px;
-}
-
 .dropdown {
     border: none;
     outline: none;
@@ -278,4 +266,8 @@ h1 {
 
 .footercontainer li {
     list-style: none;
+}
+
+.footercontainer ul li a:hover {
+    color: #007bff;
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tourist Attraction Details</title>
+    <link rel="stylesheet" th:href="@{/attractionbyname.css}">
+</head>
+<body>
+<div class="center-container">
+    <h1 class="heading" th:text="${attraction.name}">Attraction Name</h1>
+
+    <div class="attraction-details">
+        <div class="grid-container">
+            <div class="grid-item">
+                <strong>Beskrivelse:</strong>
+            </div>
+            <div class="grid-item" th:text="${attraction.description}">Description of the attraction</div>
+
+            <div class="grid-item">
+                <strong>Bedste Sæson:</strong>
+            </div>
+            <div class="grid-item" th:text="${attraction.season}">Best season for the attraction</div>
+        </div>
+    </div>
+
+    <section>
+        <a class="read-more-button" href="https://www.officialtouristattractionlink.com" target="_blank">Læs mere</a>
+    </section>
+
+    <section class="button-container">
+        <a th:href="@{/attractions/alle}">All Attractions</a>
+    </section>
+</div>
+</body>
+</html>
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tourist Attraction Details</title>
+    <link rel="stylesheet" th:href="@{/attractionbyname.css}">
+</head>
+<body>
+<div class="center-container">
+    <h1 class="heading" th:text="${attraction.name}">Attraction Name</h1>
+    <div class="attraction-details">
+        <p><strong>Beskrivelse:</strong> <span th:text="${attraction.description}">Beskrivelse af attraktion</span></p>
+        <p><strong>Bedste Sæson:</strong> <span th:text="${attraction.season}">Bedste sæson for attraktion</span></p>
+    </div>
+
+    <section>
+        <a th:href="@{/attractions}">All Attractions</a>
+    </section>
+</div>
+</body>
+</html>
+-->

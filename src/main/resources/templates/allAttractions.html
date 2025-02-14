@@ -43,11 +43,13 @@
 <h1 class="title"> Liste over alle attraktioner</h1>
 
 <div class="section">
+
     <div th:each="i : ${attractions}" class="allattractionscontainer">
         <h1 th:text="${i.getName()}"></h1>
         <img th:src="@{${i.imgPath}}" class="imgbox" />
         <p th:text="${i.getDescription()}" class="description"></p>
     </div>
+
 </div>
 
 

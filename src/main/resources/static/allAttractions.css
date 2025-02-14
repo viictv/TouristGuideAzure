@@ -1,11 +1,12 @@
 body {
-    margin: 0;
+    margin: 30px;
     padding: 0;
     padding-top: 96px;
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #a2c2e5, #f7d1c6, #ffffff);
     background-size: 400% 400%;
 }
+
 
 
 .section {
@@ -230,3 +231,4 @@ footer and navbar*/
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
