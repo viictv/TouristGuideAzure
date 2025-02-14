@@ -1,7 +1,24 @@
 body {
-    margin: 0;
+    margin: 30px;
     padding: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #ff979e, #ffb397, #ffbf97, #ffde97);
     background-size: 400% 400%;
 }
+
+a.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.button:hover {
+    background-color: #8aaff3;
+}
+
+

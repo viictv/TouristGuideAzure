@@ -12,10 +12,6 @@ public class TouristAttraction {
         this.season = season;
     }
 
-    public TouristAttraction() {
-
-    }
-
     public String getName() {
         return name;
     }

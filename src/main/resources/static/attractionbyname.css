@@ -1,0 +1,72 @@
+:root {
+    --primær-farve: #f5f5f5;
+    --button-farve: #5f89b0;
+    --text-farve: #333;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--primær-farve);
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.heading {
+    color: var(--text-farve);
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.attraction-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    width: 80%;
+    max-width: 800px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Label column and description column */
+    gap: 20px;
+}
+
+.grid-item {
+    padding: 10px;
+}
+
+.grid-item strong {
+    color: var(--button-farve);
+}
+
+a {
+    text-decoration: none;
+    color: var(--button-farve);
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+}
