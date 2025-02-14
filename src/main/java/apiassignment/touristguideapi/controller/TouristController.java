@@ -62,7 +62,9 @@ private final TouristService touristService;
     }
 
     @GetMapping("/attractions/rediger")
-    public String redigerSite () {
+    public String redigerSite (Model model) {
+        List<TouristAttraction> attractions = touristService.getAllAttractions();
+        model.addAttribute("attractions", attractions);
         return "rediger";
     }
 
