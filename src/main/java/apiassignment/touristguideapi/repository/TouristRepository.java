@@ -21,8 +21,12 @@ public class TouristRepository {
 
     public void initAttractions() {
         touristAttractions.add(new TouristAttraction("Tivoli", "Varmeste forlystelse", "Sommer", "/images/Tivoli.jpg"));
-        touristAttractions.add(new TouristAttraction("SMK", "Very demur art", "Sommer", "/images/Tivoli.jpg"));
-        touristAttractions.add(new TouristAttraction("Nyhavn", "Majestic Aura place", "Sommer", "/images/istockphoto-587892190-612x612.jpg.jpg"));
+        touristAttractions.add(new TouristAttraction("SMK", "Very demur art", "Sommer", "https://www.smk.dk/wp-content/uploads/2022/08/JoakimZuger03141-scaled-e1716369338667.jpg"));
+        touristAttractions.add(new TouristAttraction("Nyhavn", "Majestic Aura place", "Sommer", "/images/istockphoto-587892190-612x612.jpg"));
+        touristAttractions.add(new TouristAttraction("Tivoli", "Varmeste forlystelse", "Sommer", "/images/Tivoli.jpg"));
+        touristAttractions.add(new TouristAttraction("SMK", "Very demur art", "Sommer", "https://www.smk.dk/wp-content/uploads/2022/08/JoakimZuger03141-scaled-e1716369338667.jpg"));
+
+
     }
 
     public TouristAttraction addNewAttraction (TouristAttraction t1) {

@@ -3,9 +3,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: beige;
     font-family: Arial, serif;
     font-size: 14px;
+    background: linear-gradient(to right, #a2c2e5, #f7d1c6, #ffffff);
+    background-size: 400% 400%;
 }
 
 
@@ -167,11 +168,11 @@ h1 {
 
 .showcases {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-    gap: 20px; /* Space between grid items */
-    width: 100%; /* Full width of the page */
-    padding: 20px; /* Add some padding around the grid */
-    box-sizing: border-box; /* Include padding in width calculation */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .showcaseContainer {
@@ -187,7 +188,7 @@ h1 {
 }
 
 .showcaseContainer:hover {
-    transform: translateY(-5px); /* Lift the container on hover */
+    transform: translateY(-5px);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
