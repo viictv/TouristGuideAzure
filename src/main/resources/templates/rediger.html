@@ -2,13 +2,12 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/index.css}">
-
+    <link rel="stylesheet" th:href="@{/rediger.css}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <title>Title</title>
-
+    <title>Rediger Attraktioner</title>
 </head>
 <body>
+
 <nav class="navigationBar">
     <a href="/"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
     <div class="navcontent">
@@ -39,6 +38,43 @@
 
     </div>
 </nav>
+
+<div class="container rediger-container">
+    <h1>Rediger Turistattraktioner</h1>
+
+    <section class="section">
+        <h2>Tilføj ny attraktion</h2>
+        <form action="/attractions/add" method="POST">
+            <label for="name">Navn:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="description">Beskrivelse:</label>
+            <input type="text" id="description" name="description" required>
+            <label for="season">Sæson:</label>
+            <input type="text" id="season" name="season" required>
+            <button type="submit">Tilføj Attraktion</button>
+        </form>
+    </section>
+
+    <section class="section">
+        <h2>Fjern attraktion</h2>
+        <form action="/attractions/delete" method="POST">
+            <label for="remove-name">Navn på attraktion:</label>
+            <input type="text" id="remove-name" name="name" required>
+            <button type="submit">Fjern Attraktion</button>
+        </form>
+    </section>
+
+    <section class="section">
+        <h2>Rediger attraktion</h2>
+        <form action="/attractions/update" method="POST">
+            <label for="edit-name">Navn på attraktion:</label>
+            <input type="text" id="edit-name" name="name" required>
+            <label for="replacement-name">Nyt navn:</label>
+            <input type="text" id="replacement-name" name="replacementName" required>
+            <button type="submit">Rediger Attraktion</button>
+        </form>
+    </section>
+</div>
 
 </body>
 </html>
