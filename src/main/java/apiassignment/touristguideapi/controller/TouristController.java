@@ -20,6 +20,7 @@ private final TouristService touristService;
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
+  
     @GetMapping("/attractions/test")
     public ResponseEntity<List<TouristAttraction>> getAllAttractions() {
     List<TouristAttraction> t1 = touristService.getAllAttractions();
@@ -113,6 +114,24 @@ private final TouristService touristService;
     public String updateAttractions(@ModelAttribute TouristAttraction t1) {
         touristService.addTouristAttraction(t1);
         return "redirect:/add";
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction t1) {
+        TouristAttraction addAttraction = touristService.addTouristAttraction(t1);
+        return new ResponseEntity<>(addAttraction, HttpStatus.CREATED);
+        }
+
+    @PostMapping("/update")
+    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementname) {
+        TouristAttraction test = touristService.renameAttraction(name, replacementname);
+        return new ResponseEntity<>(test, HttpStatus.OK);
+    }
+
+    @PostMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
+        TouristAttraction test = touristService.removeAttraction(name);
+        return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
     }

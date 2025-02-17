@@ -69,6 +69,7 @@ public class TouristRepository {
         return null;
     }
 
+
     public ArrayList<TouristAttraction> getAttractionBySeason(String season) {
         ArrayList<TouristAttraction> newList = new ArrayList<>();
         for(TouristAttraction t1 : touristAttractions) {
@@ -78,6 +79,7 @@ public class TouristRepository {
         }
         return newList;
     }
+
 
 
 }
