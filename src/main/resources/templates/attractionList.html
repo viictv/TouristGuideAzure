@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>All attractions</title>
-    <link rel="stylesheet" th:href="@{/seasonBasedAttractions.css}">
+    <link rel="stylesheet" th:href="@{/attractionList.css}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 </head>
@@ -40,16 +40,21 @@
 </nav>
 
 
-<h1 class="title"> Liste over alle sommer attraktioner</h1>
+<h1 class="title"> Liste over alle attraktioner</h1>
 
 <div class="section">
 
-    <div th:each="i : ${attractionsBySeason}" class="allattractionscontainer">
+    <div th:each="i : ${attractions}" class="allattractionscontainer">
         <h1 th:text="${i.getName()}"></h1>
         <img th:src="@{${i.imgPath}}" class="imgbox" />
         <p th:text="${i.getDescription()}" class="description"></p>
+        <button class="tagsButton"> <a href="/{name}/tags" target="_blank"> Tags </a></button>
     </div>
 
+</div>
+
+<div class ="button">
+<button> Tilføj attraktion </button>
 </div>
 
 

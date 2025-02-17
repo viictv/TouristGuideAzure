@@ -23,6 +23,10 @@ public class TouristAttraction {
         this.tagsList = tagsList;
     }
 
+    public TouristAttraction() {
+
+    }
+
     public String getName() {
         return name;
     }

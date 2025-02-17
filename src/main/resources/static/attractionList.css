@@ -1,10 +1,11 @@
 body {
-    margin: 30px;
+
     padding: 0;
     padding-top: 96px;
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #a2c2e5, #f7d1c6, #ffffff);
     background-size: 400% 400%;
+
 }
 
 
@@ -232,3 +233,9 @@ footer and navbar*/
     display: block;
 }
 
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

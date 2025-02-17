@@ -21,8 +21,8 @@ private final TouristService touristService;
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
-
-    @GetMapping("/attractions")
+  
+    @GetMapping("/attractions/test")
     public ResponseEntity<List<TouristAttraction>> getAllAttractions() {
     List<TouristAttraction> t1 = touristService.getAllAttractions();
     return new ResponseEntity<>(t1, HttpStatus.OK);
@@ -70,11 +70,11 @@ private final TouristService touristService;
     }
 
 
-    @GetMapping("/attractions/alle")
+    @GetMapping("/attractions")
     public String listAttactions(Model model) {
         List<TouristAttraction> farvel = touristService.getAllAttractions();
         model.addAttribute("attractions", farvel);
-        return "allAttractions";
+        return "attractionList";
     }
 
     @GetMapping("/attractions/seasons/sommer")
@@ -96,6 +96,43 @@ private final TouristService touristService;
         List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.HELÅRS);
         model.addAttribute("attractionsBySeason", t1);
         return "helÅr";
+    }
+
+    @GetMapping("/{name}/tags")
+    public String attractionTags(Model model, @PathVariable String name) {
+        model.addAttribute("attractionsTags", null);
+        return "tags";
+    }
+
+    @GetMapping("/add")
+    public String addAttractions(Model model) {
+        TouristAttraction addAttraction = new TouristAttraction();
+        model.addAttribute("touristAttraction", addAttraction);
+        return "addAttractions";
+    }
+
+    @PostMapping("/add")
+    public String updateAttractions(@ModelAttribute TouristAttraction t1) {
+        touristService.addTouristAttraction(t1);
+        return "redirect:/add";
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction t1) {
+        TouristAttraction addAttraction = touristService.addTouristAttraction(t1);
+        return new ResponseEntity<>(addAttraction, HttpStatus.CREATED);
+        }
+
+    @PostMapping("/update")
+    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementname) {
+        TouristAttraction test = touristService.renameAttraction(name, replacementname);
+        return new ResponseEntity<>(test, HttpStatus.OK);
+    }
+
+    @PostMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
+        TouristAttraction test = touristService.removeAttraction(name);
+        return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
     }
