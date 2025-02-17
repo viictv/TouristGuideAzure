@@ -1,6 +1,7 @@
 package apiassignment.touristguideapi.controller;
 
 import apiassignment.touristguideapi.model.TouristAttraction;
+import apiassignment.touristguideapi.repository.Season;
 import apiassignment.touristguideapi.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,11 +56,11 @@ private final TouristService touristService;
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
-    @GetMapping("/attractions/season/{season}")
+   /* @GetMapping("/attractions/season/{season}")
     public ResponseEntity<List<TouristAttraction>> getAttractionBySeason(@PathVariable String season) {
         ArrayList<TouristAttraction> t1 = touristService.getAttractionBySeason(season);
         return new ResponseEntity<>(t1, HttpStatus.OK);
-    }
+    }*/
 
     @GetMapping("/attractions/rediger")
     public String redigerSite (Model model) {
@@ -78,21 +79,21 @@ private final TouristService touristService;
 
     @GetMapping("/attractions/seasons/sommer")
     public String listAttractionsBySeasonSommer(Model model) {
-        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Sommer");
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.SOMMER);
         model.addAttribute("attractionsBySeason", t1);
         return "sommerAttractions";
     }
 
     @GetMapping("/attractions/seasons/vinter")
     public String listAttractionsBySeasonVinter(Model model) {
-        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Vinter");
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.VINTER);
         model.addAttribute("attractionsBySeason", t1);
         return "vinterAttractions";
     }
 
     @GetMapping("/attractions/seasons/helår")
     public String listAttractionsBySeasonHelår(Model model) {
-        List<TouristAttraction> t1 = touristService.getAttractionBySeason("Helår");
+        List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.HELÅRS);
         model.addAttribute("attractionsBySeason", t1);
         return "helÅr";
     }

@@ -1,17 +1,26 @@
 package apiassignment.touristguideapi.model;
 
+import apiassignment.touristguideapi.repository.Season;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TouristAttraction {
 
     private String name;
     private String description;
-    private String season;
+    private Season season; //ENUM klasse
     private String imgPath;
+    private String city;
+    private List<String> tagsList;
 
-    public TouristAttraction(String name, String description, String season, String imgPath) {
+    public TouristAttraction(String name, String description, Season season, String imgPath, String city, List<String> tagsList) {
         this.name = name;
         this.description = description;
         this.season = season;
         this.imgPath = imgPath;
+        this.city = city;
+        this.tagsList = tagsList;
     }
 
     public TouristAttraction() {
@@ -34,11 +43,11 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public String getSeason() {
+    public Season getSeason() {
         return season;
     }
 
-    public void setSeason(String season) {
+    public void setSeason(Season season) {
         this.season = season;
     }
 
