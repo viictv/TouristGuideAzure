@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Tourist guide</title>
+</head>
+<body>
+<nav class="navigationBar">
+    <a href="/"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
+    <div class="navcontent">
+        <a href="/attractions">Se alle attraktioner</a>
+        <div class="container">
+            <div class="dropdown">
+                <button class="dropbtn"> Se en bestemt attraktion
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/attractions/Tivoli"> Tivoli </a>
+                    <a href="/attractions/SMK"> SMK </a>
+                    <a href="/attractions/Nyhavn"> Nyhavn </a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"> Se en attraktion baseret på sæson
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/attractions/seasons/sommer"> Sommer </a>
+                    <a href="/attractions/seasons/vinter"> Vinter </a>
+                    <a href="/attractions/seasons/helår"> Helår </a>
+                </div>
+            </div>
+            <a href="/attractions/rediger"target="_blank">Rediger attraktion</a>
+        </div>
+
+    </div>
+</nav>
+
+<section class="coversection">
+    <img class ="startBillede" src="images/Copenhagen-Panorama.jpg" alt="Photo of denmark">
+        <h2 class="coverText"> Velkommen til Danmarks bedste side for turister </h2>
+        <div class="buttons">
+            <!--<button type="button" class="knap"> test</button>
+            <button type="button" class="knap"> test</button>-->
+        </div>
+</section>
+
+<h1>Tjek disse udvalgte seværdigheder ud!</h1>
+<section class="showcases">
+    <div class="showcaseContainer">
+        <a href="https://www.campadventure.dk/skovtaarnet/" target="_blank">
+            <h2>Skovtårnet</h2>
+            <img src="https://files.guidedanmark.org/files/444/219094_Skovtrnet_8.jpg?width=1920&height=960&format=webp&mode=crop" alt="Træ ting">
+        </a>
+    </div>
+    <div class="showcaseContainer">
+        <a href="https://www.legoland.dk/" target="_blank">
+            <h2>Legoland</h2>
+            <img src="https://www.legoland.dk/media/joclxhf1/136-legoland__k1a2849_final_1920x1080.jpg" alt="Lego land">
+        </a>
+    </div>
+    <div class="showcaseContainer">
+        <a href="https://www.tivoli.dk/" target="_blank">
+            <h2>Tivoli</h2>
+            <img src="https://wallpapercat.com/w/full/0/f/e/685597-2048x1152-desktop-hd-tivoli-gardens-wallpaper-image.jpg" alt="Tivoli">
+        </a>
+    </div>
+</section>
+
+
+<div class="midtSection">
+
+    <img src="images/rosenborg.jpg" alt="Billede af rosenborg">
+    <div class ="box">
+    <p class="billedeText">
+        Danmark, et land fyldt med kulturarv og naturskønne oplevelser, byder på noget for enhver smag.
+        <br>
+        <br>
+        Fra hovedstaden København, hvor moderne arkitektur møder historiske slotte, til de brostensbelagte gader med
+        hyggelige caféer og verdensberømte Tivoli.
+        <br> <br>Danmarks kyststrækning byder på kilometerlange hvide sandstrande og pittoreske fiskerbyer som Skagen og
+        Hornbæk, hvor havet møder himlen.
+        <br><br>Når du bevæger dig ind i landet, finder du smukke skove og søer, ideelle til vandreture og cykelture,
+        med et rigt dyreliv.
+        <br><br>Øerne Samsø og Bornholm er kendt for deres unikke charme og naturskønhed, mens Møn praler med sine
+        imponerende klinter.
+        <br><br>Danmark er også kendt for sin gastronomi, især smørrebrød og den moderne nordiske køkkenstil, som har
+        sat restauranter som Noma på det globale kulinariske landkort.
+        <br><br>Kulturlivet blomstrer med talrige museer, kunstgallerier og musikfestivaler. Fra vikingehistorie i
+        Roskilde til moderne kunst på Louisiana, tilbyder Danmark en dyb og varieret kulturel oplevelse.
+        <br><br>Med sin rene luft, venlige indbyggere og bæredygtige livsstil er Danmark et inspirerende eksempel på,
+        hvordan man kan leve i harmoni med naturen. Velkommen til Danmark, hvor skønheden findes i hverdagens enkelhed
+        og det storslåede landskab
+    </p>
+    </div>
+</div>
+
+<footer class="footercontainer">
+    <div class="footersection">
+        <ul>
+            <h3>Contact Us</h3>
+            <p><strong>Address: </strong> 123 Travel St, City, Country</p>
+            <li><strong>Email:</strong> <a href="mailto:travelguide@email.com">travelguide@email.com</a></li>
+            <p><strong>Phone:</strong> +123 456 789</p>
+        </ul>
+    </div>
+    <div class="footersection">
+        <ul>
+        <h3>Follow Us</h3>
+        <p><li><a href="https://www.facebook.com/kea.dk/">Facebook</a></li></p>
+        <p><li><a href="https://www.instagram.com/keacph/">Instagram</a></li></p>
+        <p><li><a href="https://twitter.com/keacph/">Twitter</a></li></p>
+        <p><li><a href="https://www.linkedin.com/school/kea-k-benhavns-erhvervsakademi/">LinkedIn</a></li></p>
+        </ul>
+    </div>
+    <div class="footersection">
+        <ul>
+        <h3>Company</h3>
+        <p><li><a href="https://kea.dk/om-kea">About us</a></li></p>
+        <p><li><a href="https://kea.dk/uddannelser/livet-pa-kea/studieliv">Blog</a></li></p>
+        <p><li><a href="https://kea.dk/samarbejde-virksomheder">Partnerships</a></li></p>
+        <p><li><a href="https://kea.career.emply.com/da/ledige-stillinger">Careers</a></li></p>
+        </ul>
+    </div>
+    <div class="footersection">
+        <ul>
+        <h3>GET Endpoint tests</h3>
+        <p><li><a href="http://localhost:8080/attractions/tivoli">Endpoint test til Tivoli</a></li></p>
+        <p><li><a href="http://localhost:8080/attractions">Endpoint test til alle Attraktioner</a></li></p>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

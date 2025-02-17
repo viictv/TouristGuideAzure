@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All attractions</title>
+  <link rel="stylesheet" th:href="@{/attractionList.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navigationBar">
+  <a href="/"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
+  <div class="navcontent">
+    <a href="/attractions" target="_blank">Se alle attraktioner</a>
+    <div class="container">
+      <div class="dropdown">
+        <button class="dropbtn"> Se en bestemt attraktion
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/attractions/Tivoli"> Tivoli </a>
+          <a href="/attractions/SMK"> SMK </a>
+          <a href="/attractions/Nyhavn"> Nyhavn </a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn"> Se en attraktion baseret på sæson
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/attractions/seasons/sommer"> Sommer </a>
+          <a href="/attractions/seasons/vinter"> Vinter </a>
+          <a href="/attractions/seasons/helår"> Helår </a>
+        </div>
+      </div>
+      <a href="/attractions/rediger">Rediger attraktion</a>
+    </div>
+
+  </div>
+</nav>
+
+<button class ="goBack"><a href="/attractions"> Tryk her for at gå tilbage </a></button>
+
+</body>
+</html>
