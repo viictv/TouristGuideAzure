@@ -133,6 +133,11 @@ private final TouristService touristService;
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
+    @GetMapping("/save")
+    public String saveAtractions(Model model) {
+        return "save";
+    }
+
    /* @PostMapping("/delete/{name}")
     public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
         TouristAttraction test = touristService.removeAttraction(name);
