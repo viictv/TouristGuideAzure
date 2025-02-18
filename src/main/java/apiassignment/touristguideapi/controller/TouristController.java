@@ -114,7 +114,7 @@ private final TouristService touristService;
     @PostMapping("/add")
     public String updateAttractions(@ModelAttribute TouristAttraction t1) {
         touristService.addTouristAttraction(t1);
-        return "redirect:/add";
+        return "redirect:/save";
     }
 
     

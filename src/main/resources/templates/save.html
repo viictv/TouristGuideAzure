@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add attractions</title>
+    <title>Save attraction</title>
+
     <link rel="stylesheet" th:href="@{/attractionList.css}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <nav class="navigationBar">
-    <a href="/"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
+    <a href="/static"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
     <div class="navcontent">
         <a href="/attractions" target="_blank">Se alle attraktioner</a>
         <div class="container">
@@ -38,28 +38,6 @@
 
     </div>
 </nav>
-
-
-<div class="addFormular">
-
-    <form action="#" th:action="@{/add}" th:object="${touristAttraction}" method="post">
-        <label for="attractionName"> Attraction name: </label>
-        <input type="text" id="attractionName" name="attractionName" th:field="*{name}"><br>
-
-        <label for="attractionDescription"> Attraction description: </label>
-        <input type="text" id="attractionDescription" name="attractionDescription" th:field="*{description}"><br>
-
-        <label for="attracionSeason"> Attraction season: </label>
-        <select id ="attracionSeason" name="attracionSeason" th:field="*{season}">
-            <option th:value="*{season}"> Season: </option>
-
-        </select>
-
-        <br><br>
-        <button type ="submit"> Add attraction </button>
-
-    </form>
-
-</div>
+<h1> Attraction added to the list </h1>
 </body>
 </html>
