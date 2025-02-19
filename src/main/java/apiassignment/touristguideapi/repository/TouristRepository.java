@@ -86,6 +86,8 @@ public class TouristRepository {
         for(TouristAttraction i : getTouristAttracions()) {
             if(i.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
                 i.setDescription(newTouristAttraction.getDescription());
+                i.setImgPath(newTouristAttraction.getDescription());
+                i.setSeason(newTouristAttraction.getSeason());
                 t1 = i;
             }
         }

@@ -28,6 +28,7 @@ private final TouristService touristService;
     return new ResponseEntity<>(t1, HttpStatus.OK);
     }
 
+
     @GetMapping("/attractions/{name}")
     public String getAttractionByName(@PathVariable String name, Model model) {
         TouristAttraction attraction = touristService.getAttractionByName(name);
@@ -38,20 +39,11 @@ private final TouristService touristService;
         return "error";
     }
 
-    @PostMapping("/attractions/delete/{name}")
-    public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
-        TouristAttraction test = touristService.removeAttraction(name);
-        return new ResponseEntity<>(test, HttpStatus.OK);
+    @PostMapping("/{name}/delete")
+    public String removeAttraction(@PathVariable String name) {
+        TouristAttraction deleteAttraction = touristService.removeAttraction(name);
+        return "redirect:/attractions";
     }
-
-
-    @GetMapping("/attractions/rediger")
-    public String redigerSite (Model model) {
-        List<TouristAttraction> attractions = touristService.getAllAttractions();
-        model.addAttribute("attractions", attractions);
-        return "rediger";
-    }
-
 
     @GetMapping("/attractions")
     public String listAttactions(Model model) {
@@ -114,14 +106,23 @@ private final TouristService touristService;
     }
 
     @GetMapping("/update")
-    public String updateAttraction(Model model, TouristAttraction t1) {
+    public String updateAttraction(Model model) {
         List<TouristAttraction> getAllAttractions = touristService.getAllAttractions();
-        TouristAttraction updateAttraction = touristService.renameAttraction(t1);
+        TouristAttraction updateAttraction = new TouristAttraction();
+        model.addAttribute("seasonTypes", Season.values());
         model.addAttribute("getAllAttractions", getAllAttractions);
         model.addAttribute("updateAttraction", updateAttraction);
         return "updateAttraction";
     }
+
+    @PostMapping("/update")
+    public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, Model model) {
+        TouristAttraction updated = touristService.renameAttraction(updateAttraction);
+        return "redirect:/save";
+
     }
+}
+
 
 
 
