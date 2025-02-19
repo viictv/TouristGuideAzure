@@ -38,29 +38,12 @@ private final TouristService touristService;
         return "error";
     }
 
-    @PostMapping("/attractions/add")
-    public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction t1) {
-        TouristAttraction addAttraction = touristService.addTouristAttraction(t1);
-        return new ResponseEntity<>(addAttraction, HttpStatus.CREATED);
-        }
-
-    @PostMapping("/attractions/update")
-    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody TouristAttraction newTouristAttraction) {
-        TouristAttraction newTouristAttractionList = touristService.renameAttraction(newTouristAttraction);
-        return new ResponseEntity<>(newTouristAttractionList, HttpStatus.OK);
-    }
-
     @PostMapping("/attractions/delete/{name}")
     public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
         TouristAttraction test = touristService.removeAttraction(name);
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
-   /* @GetMapping("/attractions/season/{season}")
-    public ResponseEntity<List<TouristAttraction>> getAttractionBySeason(@PathVariable String season) {
-        ArrayList<TouristAttraction> t1 = touristService.getAttractionBySeason(season);
-        return new ResponseEntity<>(t1, HttpStatus.OK);
-    }*/
 
     @GetMapping("/attractions/rediger")
     public String redigerSite (Model model) {
@@ -108,6 +91,7 @@ private final TouristService touristService;
     public String addAttractions(Model model) {
         TouristAttraction addAttraction = new TouristAttraction();
         model.addAttribute("touristAttraction", addAttraction);
+        model.addAttribute("seasonTypes", Season.values());
         return "addAttractions";
     }
 
@@ -117,34 +101,29 @@ private final TouristService touristService;
         return "redirect:/save";
     }
 
-    
-
-    /*@PostMapping("/add")
-    public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction t1) {
-        TouristAttraction addAttraction = touristService.addTouristAttraction(t1);
-        return new ResponseEntity<>(addAttraction, HttpStatus.CREATED);
-        }*/
-
-    @PostMapping("/update")
-    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody String name, String replacementname) {
-        /*TouristAttraction test = touristService.renameAttraction(name, replacementname);*/
-        TouristAttraction test = touristService.getAttractionByName(name);
-        test.setName(replacementname);
-        return new ResponseEntity<>(test, HttpStatus.OK);
-    }
 
     @GetMapping("/save")
     public String saveAtractions(Model model) {
         return "save";
     }
 
-   /* @PostMapping("/delete/{name}")
-    public ResponseEntity<TouristAttraction> removeAttraction(@PathVariable String name) {
-        TouristAttraction test = touristService.removeAttraction(name);
-        return new ResponseEntity<>(test, HttpStatus.OK);
-    }*/
-
+    @PostMapping("/attractions/update")
+    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody TouristAttraction newTouristAttraction) {
+        TouristAttraction newTouristAttractionList = touristService.renameAttraction(newTouristAttraction);
+        return new ResponseEntity<>(newTouristAttractionList, HttpStatus.OK);
     }
+
+    @GetMapping("/update")
+    public String updateAttraction(Model model, TouristAttraction t1) {
+        List<TouristAttraction> getAllAttractions = touristService.getAllAttractions();
+        TouristAttraction updateAttraction = touristService.renameAttraction(t1);
+        model.addAttribute("getAllAttractions", getAllAttractions);
+        model.addAttribute("updateAttraction", updateAttraction);
+        return "updateAttraction";
+    }
+    }
+
+
 
 
 

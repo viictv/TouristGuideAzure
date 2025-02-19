@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add attractions</title>
+    <title>Update attractions</title>
     <link rel="stylesheet" th:href="@{/attractionList.css}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
@@ -39,31 +39,27 @@
     </div>
 </nav>
 
+<div class="UpdateFormular">
 
-<div class="addFormular">
+    <form action="#" th:action="@{/update}" th:object="${updateAttraction}" method="post">
 
-    <form action="#" th:action="@{/add}" th:object="${touristAttraction}" method="post">
         <label for="attractionName"> Attraction name: </label>
-        <input type="text" id="attractionName" name="attractionName" th:field="*{name}"><br>
-
-        <label for="attractionDescription"> Attraction description: </label>
-        <input type="text" id="attractionDescription" name="attractionDescription" th:field="*{description}"><br>
-
-        <label for="attracionSeason"> Attraction season: </label>
-        <select id ="attracionSeason" name="attracionSeason" th:field="*{season}">
-            <option th:each="sæson : ${seasonTypes}" th:value="${sæson}" th:text="${sæson.displayName}"> Season: </option>
+        <select id="attractionName" name="attractionName">
+            <option th:each="i : ${getAllAttractions}" th:value="${i}" th:text="${i.getName()}"> Navn:</option>
         </select>
+        
+    <!----
+            <label for="attractionDescription"> Attraction description </label>
+            <input type="text" id="attractionDescription" name="attractionDescription"
+                   th:field="*{setDescription(description)}"> <br>
 
-        <br><label for="attractionPhoto"> Attraction photo: </label>
-        <input type="text" id="attractionPhoto" name="attractionPhoto" th:field="*{imgPath}"><br>
-        <label for="attractionCity"> Attraction city: </label>
-        <input type="text" id="attractionCity" name="attractionCity" th:field="*{city}"><br>
-
-        <br><br>
-        <button type ="submit"> Add attraction </button>
+        <label for="attractionPhoto"> Attraction photo </label>
+        <input type="text" id="attractionPhoto" name="attractionPhoto" th:field="*{setImgPath(imgPath)}"><br>
+    --->
 
     </form>
 
 </div>
+
 </body>
 </html>

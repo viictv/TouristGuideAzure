@@ -59,12 +59,12 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
-    @Override
-    public String toString() {
-        return "TouristAttraction{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", season='" + season + '\'' +
-                '}';
+    public String getCity() {
+        return city;
     }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
 }

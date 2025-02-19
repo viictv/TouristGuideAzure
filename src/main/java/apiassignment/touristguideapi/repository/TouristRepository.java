@@ -87,9 +87,6 @@ public class TouristRepository {
             if(i.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
                 i.setDescription(newTouristAttraction.getDescription());
                 t1 = i;
-            } else if (i.getDescription().equalsIgnoreCase(newTouristAttraction.getDescription())) {
-                i.setName(newTouristAttraction.getName());
-                t1 = i;
             }
         }
         return t1;
