@@ -28,9 +28,9 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="/attractions/seasons/sommer"> Sommer </a>
-                    <a href="/attractions/seasons/vinter"> Vinter </a>
-                    <a href="/attractions/seasons/helår"> Helår </a>
+                    <a href="/seasons/SOMMER"> Sommer </a>
+                    <a href="/seasons/VINTER"> Vinter </a>
+                    <a href="/seasons/HELÅRS"> Helår </a>
                 </div>
             </div>
             <a href="/update">Rediger attraktion</a>
@@ -39,11 +39,11 @@
     </div>
 </nav>
 
-<h1 class="test" th:text="${attractionsBySeason.season}">Attraction season</h1>
 
 <div class="section">
 
-    <div th:each="i : ${attractionsBySeason}" class="allattractionscontainer">
+    <h1 class="title" th:if="${#lists.isEmpty(attractionBySeason)}">Der er ingen attraktioner for denne sæson</h1>
+    <div th:each="i : ${attractionBySeason}" class="allattractionscontainer">
       <h1 th:text="${i.getName()}"></h1>
       <img th:src="@{${i.imgPath}}" class="imgbox" />
       <p th:text="${i.getDescription()}" class="description"></p>

@@ -113,7 +113,6 @@ public class TouristRepository {
     }
 
     public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
-
         ArrayList<TouristAttraction> newList = new ArrayList<>();
         for(TouristAttraction t1 : touristAttractions) {
             if(t1.getSeason().equals(season)) {

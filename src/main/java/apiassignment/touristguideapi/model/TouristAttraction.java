@@ -35,6 +35,7 @@ public class TouristAttraction {
         this.name = name;
     }
 
+
     public String getDescription() {
         return description;
     }
@@ -65,6 +66,18 @@ public class TouristAttraction {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "TouristAttraction{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", season=" + season +
+                ", imgPath='" + imgPath + '\'' +
+                ", city='" + city + '\'' +
+                ", tagsList=" + tagsList +
+                '}';
     }
 
 }

@@ -39,9 +39,9 @@ private final TouristService touristService;
         return "error";
     }
 
-    @GetMapping("/seaons/{name}")
-    public String getAttractionBySeason(@PathVariable String name, Model model) {
-        TouristAttraction attractionBySeason = touristService.getAttractionBySeason(name);
+    @GetMapping("/seasons/{name}")
+    public String getAttractionBySeason(@PathVariable Season name, Model model) {
+        List<TouristAttraction> attractionBySeason = touristService.getAttractionBySeason(name);
         model.addAttribute("attractionBySeason", attractionBySeason);
         return "attractionBySeason";
     }
@@ -59,26 +59,6 @@ private final TouristService touristService;
         return "attractionList";
     }
 
-    @GetMapping("/attractions/seasons/sommer")
-    public String listAttractionsBySeasonSommer(Model model) {
-        List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.SOMMER);
-        model.addAttribute("attractionsBySeason", t1);
-        return "sommerAttractions";
-    }
-
-    @GetMapping("/attractions/seasons/vinter")
-    public String listAttractionsBySeasonVinter(Model model) {
-        List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.VINTER);
-        model.addAttribute("attractionsBySeason", t1);
-        return "vinterAttractions";
-    }
-
-    @GetMapping("/attractions/seasons/helår")
-    public String listAttractionsBySeasonHelår(Model model) {
-        List<TouristAttraction> t1 = touristService.getAttractionBySeason(Season.HELÅRS);
-        model.addAttribute("attractionsBySeason", t1);
-        return "helÅr";
-    }
 
     @GetMapping("/{name}/tags")
     public String attractionTags(Model model, @PathVariable String name) {
