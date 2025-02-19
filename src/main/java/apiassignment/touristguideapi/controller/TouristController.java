@@ -39,6 +39,13 @@ private final TouristService touristService;
         return "error";
     }
 
+    @GetMapping("/seaons/{name}")
+    public String getAttractionBySeason(@PathVariable String name, Model model) {
+        TouristAttraction attractionBySeason = touristService.getAttractionBySeason(name);
+        model.addAttribute("attractionBySeason", attractionBySeason);
+        return "attractionBySeason";
+    }
+
     @PostMapping("/{name}/delete")
     public String removeAttraction(@PathVariable String name) {
         TouristAttraction deleteAttraction = touristService.removeAttraction(name);
