@@ -1,7 +1,7 @@
 package apiassignment.touristguideapi.controller;
 
 import apiassignment.touristguideapi.model.TouristAttraction;
-import apiassignment.touristguideapi.repository.Season;
+import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

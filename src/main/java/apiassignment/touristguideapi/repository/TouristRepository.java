@@ -3,6 +3,7 @@ package apiassignment.touristguideapi.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 

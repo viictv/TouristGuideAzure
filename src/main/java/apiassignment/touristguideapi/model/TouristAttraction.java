@@ -1,8 +1,5 @@
 package apiassignment.touristguideapi.model;
 
-import apiassignment.touristguideapi.repository.Season;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
