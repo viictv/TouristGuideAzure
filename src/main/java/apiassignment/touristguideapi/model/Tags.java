@@ -17,7 +17,7 @@ public enum Tags {
         this.displayName = displayName;
     }
 
-    private String getDisplayName () {
+    public String getDisplayName () {
         return displayName;
     }
 

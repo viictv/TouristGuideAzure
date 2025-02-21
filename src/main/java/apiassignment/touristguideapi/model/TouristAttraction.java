@@ -1,5 +1,4 @@
 package apiassignment.touristguideapi.model;
-
 import java.util.List;
 
 public class TouristAttraction {
@@ -67,10 +66,6 @@ public class TouristAttraction {
 
     public List<Tags> getTagsList() {
         return tagsList;
-    }
-
-    public void setTagsList(List<Tags> tagsList) {
-        this.tagsList = tagsList;
     }
 
     @Override

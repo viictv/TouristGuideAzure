@@ -67,12 +67,13 @@ private final TouristService touristService;
     }*/
 
     //Sofies cook
-    @GetMapping("/{name}/tags")
-    public String getTagsByAttractionName (Model model, @PathVariable Tags name) {
-        List<TouristAttraction> tags = touristService.getTagsByAttractionName(name);
-        model.addAttribute("tags", tags);
-        return "tags";
+    @GetMapping("/attractions/{name}/tags")
+    public String getTagsByAttractionName(@PathVariable String name, Model model) {
+        TouristAttraction attraction = touristService.getAttractionByName(name);
+        model.addAttribute("tags", attraction.getTagsList());
+        return "tags";  // Den view, hvor tags vises
     }
+
 
 
 
