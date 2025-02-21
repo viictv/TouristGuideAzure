@@ -1,4 +1,4 @@
-package apiassignment.touristguideapi.repository;
+package apiassignment.touristguideapi.model;
 
 public enum Season {
     SOMMER("Sommer"),

@@ -1,8 +1,5 @@
 package apiassignment.touristguideapi.model;
 
-import apiassignment.touristguideapi.repository.Season;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
@@ -35,6 +32,7 @@ public class TouristAttraction {
         this.name = name;
     }
 
+
     public String getDescription() {
         return description;
     }
@@ -59,12 +57,24 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
         return "TouristAttraction{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", season='" + season + '\'' +
+                ", season=" + season +
+                ", imgPath='" + imgPath + '\'' +
+                ", city='" + city + '\'' +
+                ", tagsList=" + tagsList +
                 '}';
     }
+
 }

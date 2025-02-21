@@ -3,6 +3,7 @@ package apiassignment.touristguideapi.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 
@@ -86,9 +87,8 @@ public class TouristRepository {
         for(TouristAttraction i : getTouristAttracions()) {
             if(i.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
                 i.setDescription(newTouristAttraction.getDescription());
-                t1 = i;
-            } else if (i.getDescription().equalsIgnoreCase(newTouristAttraction.getDescription())) {
-                i.setName(newTouristAttraction.getName());
+                i.setImgPath(newTouristAttraction.getDescription());
+                i.setSeason(newTouristAttraction.getSeason());
                 t1 = i;
             }
         }
@@ -114,7 +114,6 @@ public class TouristRepository {
     }
 
     public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
-
         ArrayList<TouristAttraction> newList = new ArrayList<>();
         for(TouristAttraction t1 : touristAttractions) {
             if(t1.getSeason().equals(season)) {
