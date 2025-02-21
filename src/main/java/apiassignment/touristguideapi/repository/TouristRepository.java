@@ -17,7 +17,7 @@ public class TouristRepository {
         initAttractions();
     }
 
-    public List<TouristAttraction> getTouristAttracions() {
+    public List<TouristAttraction> getTouristAttractions() {
         return touristAttractions;
     }
 
@@ -85,7 +85,7 @@ public class TouristRepository {
 
     public TouristAttraction renameAttraction (TouristAttraction newTouristAttraction) {
         TouristAttraction t1 = null;
-        for(TouristAttraction i : getTouristAttracions()) {
+        for(TouristAttraction i : getTouristAttractions()) {
             if(i.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
                 i.setDescription(newTouristAttraction.getDescription());
                 i.setImgPath(newTouristAttraction.getDescription());
@@ -124,20 +124,15 @@ public class TouristRepository {
         return newList;
     }
 
-    /*public List<Tags> getTagsByAttractionName (String selectedAttraction) {
-
-    }*/
-
-    public ArrayList<TouristAttraction> getTagsByAttractionName(Tags tagsList) {
-        ArrayList<TouristAttraction> newList = new ArrayList<>();
-        for(TouristAttraction t1 : touristAttractions) {
-            if(t1.getTagsList().equals(tagsList)) {
-                newList.add(t1);
+    //Sofie cooking
+    public List<Tags> getTagsByAttractionName(String attractionName) {
+        for (TouristAttraction attraction : touristAttractions) {
+            if (attraction.getName().equalsIgnoreCase(attractionName)) {
+                return attraction.getTagsList();
             }
         }
-        return newList;
+        return null;
     }
-
 
 
 

@@ -40,12 +40,17 @@
 </nav>
 
 <div>
-  <h1 class="heading" th:text="${attraction.name}">Attraction Name</h1>
-  <p th:text="${attraction.tagsList}"></p>
+  <h1>Tags for attraktionen</h1>
+  <div th:if="${errorMessage}">
+    <p style="color: red;" th:text="${errorMessage}"></p>
+  </div>
+  <div th:if="${tags}">
+    <ul>
+      <li th:each="tag : ${tags}" th:text="${tag.displayName}"></li>
+    </ul>
+  </div>
 </div>
-
-
-<button class ="goBack"><a href="/attractions"> Tryk her for at gå tilbage </a></button>
+<button class="goBack"><a href="/attractions">Tryk her for at gå tilbage</a></button>
 
 </body>
 </html>

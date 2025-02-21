@@ -19,7 +19,7 @@ public class TouristService {
     }
 
     public List<TouristAttraction> getAllAttractions() {
-        return touristRepository.getTouristAttracions();
+        return touristRepository.getTouristAttractions();
     }
 
     public TouristAttraction getAttractionByName (String name) {
@@ -42,7 +42,9 @@ public class TouristService {
         return touristRepository.getAttractionBySeason(season);
     }
 
-    public ArrayList<TouristAttraction> getTagsByAttractionName (Tags tagList) {
-        return touristRepository.getTagsByAttractionName(tagList);
+    //Sofie cooking
+    public List<Tags> getTagsByAttractionName(String attractionName) {
+        return touristRepository.getTagsByAttractionName(attractionName);
     }
+
 }
