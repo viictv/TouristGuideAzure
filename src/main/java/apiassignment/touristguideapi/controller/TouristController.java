@@ -1,5 +1,6 @@
 package apiassignment.touristguideapi.controller;
 
+import apiassignment.touristguideapi.model.Tags;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.service.TouristService;
@@ -59,11 +60,21 @@ private final TouristService touristService;
     }
 
 
-    @GetMapping("/{name}/tags")
+    /*@GetMapping("/{name}/tags")
     public String attractionTags(Model model, @PathVariable String name) {
         model.addAttribute("attractionsTags", null);
         return "tags";
+    }*/
+
+    //Sofies cook
+    @GetMapping("/{name}/tags")
+    public String getTagsByAttractionName (Model model, @PathVariable Tags name) {
+        List<TouristAttraction> tags = touristService.getTagsByAttractionName(name);
+        model.addAttribute("tags", tags);
+        return "tags";
     }
+
+
 
     @GetMapping("/add")
     public String addAttractions(Model model) {
@@ -105,7 +116,6 @@ private final TouristService touristService;
     public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, Model model) {
         TouristAttraction updated = touristService.renameAttraction(updateAttraction);
         return "redirect:/save";
-
     }
 }
 

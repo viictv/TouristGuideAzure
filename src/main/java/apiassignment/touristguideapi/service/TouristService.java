@@ -1,5 +1,6 @@
 package apiassignment.touristguideapi.service;
 
+import apiassignment.touristguideapi.model.Tags;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.repository.TouristRepository;
@@ -39,5 +40,9 @@ public class TouristService {
 
     public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
         return touristRepository.getAttractionBySeason(season);
+    }
+
+    public ArrayList<TouristAttraction> getTagsByAttractionName (Tags tagList) {
+        return touristRepository.getTagsByAttractionName(tagList);
     }
 }

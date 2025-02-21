@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apiassignment.touristguideapi.model.Season;
+import apiassignment.touristguideapi.model.Tags;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +28,7 @@ public class TouristRepository {
                     Season.SOMMER,
                     "/images/Tivoli.jpg",
                     "København",
-                    List.of("Underholdning", "Adrenalin", "Mad") // Using List.of for tags
+                    List.of(Tags.UNDERHOLDNING, Tags.ADRENALIN, Tags.MAD)
             ));
 
             touristAttractions.add(new TouristAttraction(
@@ -36,7 +37,7 @@ public class TouristRepository {
                     Season.HELÅRS,
                     "https://www.smk.dk/wp-content/uploads/2022/08/JoakimZuger03141-scaled-e1716369338667.jpg",
                     "København",
-                    List.of("Kunst", "Kultur", "Historie")
+                    List.of(Tags.KUNST, Tags.KULTUR, Tags.HISTORIE)
             ));
 
             touristAttractions.add(new TouristAttraction(
@@ -45,7 +46,7 @@ public class TouristRepository {
                     Season.HELÅRS,
                     "/images/istockphoto-587892190-612x612.jpg",
                     "København",
-                    List.of("Seværdigheder", "Mad", "Kultur")
+                    List.of(Tags.SEVÆRDIGHEDER, Tags.MAD, Tags.KULTUR)
             ));
 
             touristAttractions.add(new TouristAttraction(
@@ -54,7 +55,7 @@ public class TouristRepository {
                     Season.SOMMER,
                     "https://www.legoland.dk/media/joclxhf1/136-legoland__k1a2849_final_1920x1080.jpg",
                     "Billund",
-                    List.of("Lego", "Kunst")
+                    List.of(Tags.UNDERHOLDNING, Tags.KUNST)
             ));
 
             touristAttractions.add(new TouristAttraction(
@@ -63,7 +64,7 @@ public class TouristRepository {
                     Season.SOMMER,
                     "https://files.guidedanmark.org/files/444/219094_Skovtrnet_8.jpg?width=1920&height=960&format=webp&mode=crop",
                     "Gisselfeld Kloster",
-                    List.of("Frisk luft", "Højdeskræk")
+                    List.of(Tags.NATUR, Tags.SEVÆRDIGHEDER)
             ));
 
             touristAttractions.add(new TouristAttraction(
@@ -72,7 +73,7 @@ public class TouristRepository {
                     Season.SOMMER,
                     "https://www.bonbonland.dk/content/dam/bbl/images/blog/Bedste%20rutchebane.jpg",
                     "Holme-Olstrup",
-                    List.of("Adrenalin", "Forlystelser")
+                    List.of(Tags.ADRENALIN, Tags.FORLYSTELSER)
             ));
 
     }
@@ -122,6 +123,21 @@ public class TouristRepository {
         }
         return newList;
     }
+
+    /*public List<Tags> getTagsByAttractionName (String selectedAttraction) {
+
+    }*/
+
+    public ArrayList<TouristAttraction> getTagsByAttractionName(Tags tagsList) {
+        ArrayList<TouristAttraction> newList = new ArrayList<>();
+        for(TouristAttraction t1 : touristAttractions) {
+            if(t1.getTagsList().equals(tagsList)) {
+                newList.add(t1);
+            }
+        }
+        return newList;
+    }
+
 
 
 

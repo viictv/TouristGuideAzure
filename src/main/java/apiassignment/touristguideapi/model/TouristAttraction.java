@@ -6,12 +6,12 @@ public class TouristAttraction {
 
     private String name;
     private String description;
-    private Season season; //ENUM klasse
+    private Season season;
     private String imgPath;
     private String city;
-    private List<String> tagsList;
+    private List<Tags> tagsList;
 
-    public TouristAttraction(String name, String description, Season season, String imgPath, String city, List<String> tagsList) {
+    public TouristAttraction(String name, String description, Season season, String imgPath, String city, List<Tags> tagsList) {
         this.name = name;
         this.description = description;
         this.season = season;
@@ -63,6 +63,14 @@ public class TouristAttraction {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<Tags> getTagsList() {
+        return tagsList;
+    }
+
+    public void setTagsList(List<Tags> tagsList) {
+        this.tagsList = tagsList;
     }
 
     @Override
