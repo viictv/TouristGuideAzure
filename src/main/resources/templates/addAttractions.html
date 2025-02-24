@@ -57,7 +57,10 @@
         <br><label for="attractionPhoto"> Attraction photo: </label>
         <input type="text" id="attractionPhoto" name="attractionPhoto" th:field="*{imgPath}"><br>
         <label for="attractionCity"> Attraction city: </label>
-        <input type="text" id="attractionCity" name="attractionCity" th:field="*{city}"><br>
+        <select id="attractionCity" th:field="*{city}">
+            <option th:each="i : ${getAllCities}" th:value="${i}" th:text="${i}"> By:
+            </option>
+        </select>
 
         <br><br>
         <button type ="submit"> Add attraction </button>

@@ -80,8 +80,10 @@ private final TouristService touristService;
     @GetMapping("/add")
     public String addAttractions(Model model) {
         TouristAttraction addAttraction = new TouristAttraction();
+        List<String> getAllCities = touristService.getAllCities();
         model.addAttribute("touristAttraction", addAttraction);
         model.addAttribute("seasonTypes", Season.values());
+        model.addAttribute("getAllCities", getAllCities);
         return "addAttractions";
     }
 
