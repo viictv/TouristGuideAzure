@@ -22,6 +22,10 @@ public class TouristService {
         return touristRepository.getTouristAttractions();
     }
 
+    public List<String> getAllCities() {
+        return touristRepository.getCities();
+    }
+
     public TouristAttraction getAttractionByName (String name) {
         return touristRepository.getAttractionByName(name);
     }

@@ -97,18 +97,20 @@ private final TouristService touristService;
         return "save";
     }
 
-    @PostMapping("/attractions/update")
-    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody TouristAttraction newTouristAttraction) {
-        TouristAttraction newTouristAttractionList = touristService.renameAttraction(newTouristAttraction);
-        return new ResponseEntity<>(newTouristAttractionList, HttpStatus.OK);
-    }
+//    @PostMapping("/attractions/update")
+//    public ResponseEntity<TouristAttraction> renameAttraction(@RequestBody TouristAttraction newTouristAttraction) {
+//        TouristAttraction newTouristAttractionList = touristService.renameAttraction(newTouristAttraction);
+//        return new ResponseEntity<>(newTouristAttractionList, HttpStatus.OK);
+//    }
 
     @GetMapping("/update")
     public String updateAttraction(Model model) {
         List<TouristAttraction> getAllAttractions = touristService.getAllAttractions();
+        List<String> getAllCities = touristService.getAllCities();
         TouristAttraction updateAttraction = new TouristAttraction();
         model.addAttribute("seasonTypes", Season.values());
         model.addAttribute("getAllAttractions", getAllAttractions);
+        model.addAttribute("getAllCities", getAllCities);
         model.addAttribute("updateAttraction", updateAttraction);
         return "updateAttraction";
     }

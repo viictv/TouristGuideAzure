@@ -12,9 +12,11 @@ import org.springframework.stereotype.Repository;
 public class TouristRepository {
 
     private final List<TouristAttraction> touristAttractions = new ArrayList<>();
+    private final List<String> allCities = new ArrayList<>();
 
     public TouristRepository() {
         initAttractions();
+        initCities();
     }
 
     public List<TouristAttraction> getTouristAttractions() {
@@ -88,7 +90,7 @@ public class TouristRepository {
         for(TouristAttraction i : getTouristAttractions()) {
             if(i.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
                 i.setDescription(newTouristAttraction.getDescription());
-                i.setImgPath(newTouristAttraction.getDescription());
+                i.setImgPath(newTouristAttraction.getImgPath());
                 i.setSeason(newTouristAttraction.getSeason());
                 t1 = i;
             }
@@ -132,6 +134,18 @@ public class TouristRepository {
             }
         }
         return null;
+    }
+
+    public void initCities() {
+        allCities.add("København Ø");
+        allCities.add("København V");
+        allCities.add("Søborg");
+        allCities.add("Ishøj");
+        allCities.add("Brønshæj");
+    }
+
+    public List<String> getCities() {
+        return allCities;
     }
 
 
