@@ -49,13 +49,14 @@
         <img th:src="@{${i.imgPath}}" class="imgbox" />
         <p th:text="${i.getDescription()}" class="description"></p>
         <p th:text="${i.getSeason()}" class="season"></p>
-        <button class="tagsButton">
+       <!--Her laver vi en knap-->
+        <button class="button">
             <a th:href="@{/attractions/{name}/tags(name=${i.name})}" target="_blank"> Tags </a>
         </button>
         <form th:action="@{/{name}/delete(name=${i.name})}" method="post">
-        <button type="submit">Slet attraktion</button>
+        <button class="button" type="submit">Slet attraktion</button>
         </form>
-        <button><a href="/update" target ="_blank"> Opdater attraktion </a></button>
+        <button class="button"><a href="/update" target ="_blank"> Opdater attraktion </a></button>
     </div>
 
 </div>
