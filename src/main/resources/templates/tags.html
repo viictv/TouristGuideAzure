@@ -7,37 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-<nav class="navigationBar">
-  <a href="/"><h1 class="overskrift"> Turistguide i Danmark </h1></a>
-  <div class="navcontent">
-    <a href="/attractions" target="_blank">Se alle attraktioner</a>
-    <div class="container">
-      <div class="dropdown">
-        <button class="dropbtn"> Se en bestemt attraktion
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="/attractions/Tivoli"> Tivoli </a>
-          <a href="/attractions/SMK"> SMK </a>
-          <a href="/attractions/Nyhavn"> Nyhavn </a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn"> Se en attraktion baseret på sæson
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="/seasons/SOMMER"> Sommer </a>
-          <a href="/seasons/VINTER"> Vinter </a>
-          <a href="/seasons/HELÅRS"> Helår </a>
-        </div>
-      </div>
-      <a href="/attractions/edit">Rediger attraktion</a>
-    </div>
-
-  </div>
-</nav>
 
 <div>
   <h1>Tags for attraktionen</h1>
@@ -51,6 +22,8 @@
   </div>
 </div>
 <button class="goBack"><a href="/attractions">Tryk her for at gå tilbage</a></button>
+
+<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 </html>

@@ -1,0 +1,29 @@
+.footercontainer {
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly ;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+.footersubcontainer {
+    width: 50%;
+}
+
+.footercontainer a {
+    text-decoration: none;
+    color: white;
+}
+.footercontainer h3 {
+    color: #b6b6b6;
+}
+
+.footercontainer li {
+    list-style: none;
+}
+
+.footercontainer ul li a:hover {
+    color: #007bff;
+}
+
