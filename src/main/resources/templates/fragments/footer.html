@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All attractions</title>
-  <link rel="stylesheet" th:href="@{/attractionList.css}">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/static/footer.css}">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
-
-
-<footer>
+<div th:fragment="footer">
   <footer class="footercontainer">
     <div class="footersection">
       <ul>
@@ -46,11 +43,6 @@
       </ul>
     </div>
   </footer>
-
-
-</footer>
-
-<div th:replace="fragments/footer :: footer"></div>
-
+</div>
 </body>
 </html>
