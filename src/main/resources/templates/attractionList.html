@@ -33,7 +33,7 @@
                     <a href="/seasons/HELÅRS"> Helår </a>
                 </div>
             </div>
-            <a href="/update">Rediger attraktion</a>
+            <a href="/attractions/edit">Rediger attraktion</a>
         </div>
 
     </div>
@@ -53,10 +53,10 @@
         <button class="button">
             <a th:href="@{/attractions/{name}/tags(name=${i.name})}" target="_blank"> Tags </a>
         </button>
-        <form th:action="@{/{name}/delete(name=${i.name})}" method="post">
-        <button class="button" type="submit">Slet attraktion</button>
+        <form th:action="@{/attractions/delete/{name}(name=${i.name})}" method="post">
+        <button type="submit">Slet attraktion</button>
         </form>
-        <button class="button"><a href="/update" target ="_blank"> Opdater attraktion </a></button>
+        <button><a href="/attractions/edit" target ="_blank"> Opdater attraktion </a></button>
     </div>
 
 </div>

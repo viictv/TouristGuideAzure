@@ -33,7 +33,7 @@
                     <a href="/seasons/HELÅRS"> Helår </a>
                 </div>
             </div>
-            <a href="/update">Rediger attraktion</a>
+            <a href="/attractions/edit">Rediger attraktion</a>
         </div>
 
     </div>
@@ -42,7 +42,7 @@
 
 <div class="addFormular">
 
-    <form action="#" th:action="@{/add}" th:object="${touristAttraction}" method="post">
+    <form action="#" th:action="@{/save}" th:object="${touristAttraction}" method="post">
         <label for="attractionName"> Attraction name: </label>
         <input type="text" id="attractionName" name="attractionName" th:field="*{name}"><br>
 
@@ -57,7 +57,10 @@
         <br><label for="attractionPhoto"> Attraction photo: </label>
         <input type="text" id="attractionPhoto" name="attractionPhoto" th:field="*{imgPath}"><br>
         <label for="attractionCity"> Attraction city: </label>
-        <input type="text" id="attractionCity" name="attractionCity" th:field="*{city}"><br>
+        <select id="attractionCity" th:field="*{city}">
+            <option th:each="i : ${getAllCities}" th:value="${i}" th:text="${i}"> By:
+            </option>
+        </select>
 
         <br><br>
         <button type ="submit"> Add attraction </button>
