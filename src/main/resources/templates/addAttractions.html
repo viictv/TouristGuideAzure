@@ -33,6 +33,13 @@
             </option>
         </select>
 
+        <br>
+        <label>Attraction tags:</label> <br>
+        <div th:each="tag : ${getAllTags}">
+            <input type="checkbox" name="tagsList" th:value="${tag.name()}" th:id="${tag.name()}">
+            <label th:for="${tag.name()}" th:text="${tag.displayName}"></label>
+        </div>
+
         <br><br>
         <button type ="submit"> Add attraction </button>
 

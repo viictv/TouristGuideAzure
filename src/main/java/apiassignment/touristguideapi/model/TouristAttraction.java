@@ -1,4 +1,5 @@
 package apiassignment.touristguideapi.model;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
@@ -8,7 +9,7 @@ public class TouristAttraction {
     private Season season;
     private String imgPath;
     private String city;
-    private List<Tags> tagsList;
+    private List<Tags> tagsList = new ArrayList<>();
 
     public TouristAttraction(String name, String description, Season season, String imgPath, String city, List<Tags> tagsList) {
         this.name = name;
@@ -66,6 +67,10 @@ public class TouristAttraction {
 
     public List<Tags> getTagsList() {
         return tagsList;
+    }
+
+    public void setTagsList(List<Tags> tagsList) {
+        this.tagsList = tagsList;
     }
 
     @Override

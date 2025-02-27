@@ -92,6 +92,7 @@ public class TouristRepository {
                 i.setDescription(newTouristAttraction.getDescription());
                 i.setImgPath(newTouristAttraction.getImgPath());
                 i.setSeason(newTouristAttraction.getSeason());
+                i.setTagsList(newTouristAttraction.getTagsList());
                 t1 = i;
             }
         }
