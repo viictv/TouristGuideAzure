@@ -360,5 +360,10 @@ a {
     flex-direction: column;
 }
 
+.buttonsoverallcontainer a {
+    display: block;
+    width: 100%;
+}
+
 
 

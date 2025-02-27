@@ -23,14 +23,14 @@
         <p th:text="${i.getSeason()}" class="season"></p>
        <!--Her laver vi en knap-->
         <div class="buttonsoverallcontainer">
-            <button class="button-87 tags">
+            <button class="button-87 tags" th:href="@{/attractions/{name}/tags(name=${i.name})}">
                 <a th:href="@{/attractions/{name}/tags(name=${i.name})}" target="_blank">Vis tags </a>
             </button>
             <div class="deleteeditcontainer">
                 <form th:action="@{/attractions/delete/{name}(name=${i.name})}" method="post">
-                    <button class="button-87 delete" type="submit">Slet attraktion</button>
+                    <button class="button-87 delete" type="submit" >Slet attraktion</button>
                 </form>
-                <button class="button-87 edit"><a href="/attractions/edit" target ="_blank"> Opdater attraktion </a></button>
+                <button class="button-87 edit"><a th:href="@{/attractions/edit}" target ="_blank"> Opdater attraktion </a></button>
             </div>
         </div>
 
