@@ -63,7 +63,7 @@ private final TouristService touristService;
         return "redirect:/updatedlist";
     }
 
-        @GetMapping("/attractions/edit")
+    @GetMapping("/attractions/edit")
     public String updateAttraction(Model model) {
         List<TouristAttraction> getAllAttractions = touristService.getAllAttractions();
         List<String> getAllCities = touristService.getAllCities();
