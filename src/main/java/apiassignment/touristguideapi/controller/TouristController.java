@@ -112,13 +112,6 @@ private final TouristService touristService;
         model.addAttribute("attractionBySeason", attractionBySeason);
         return "attractionBySeason";
     }
-
-    @GetMapping("/test")
-    public ResponseEntity<List<TouristAttraction>> getAllAttractions() {
-        List<TouristAttraction> t1 = touristService.getAllAttractions();
-        return new ResponseEntity<>(t1, HttpStatus.OK);
-    }
-
 }
 
 
