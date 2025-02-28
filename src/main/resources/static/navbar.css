@@ -10,8 +10,9 @@ body {
 
 .navigationBar {
     z-index: 5;
-    background: white;
-    box-shadow: #333333;
+    background: transparent;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 50%;

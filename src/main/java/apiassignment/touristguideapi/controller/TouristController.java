@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -54,16 +55,23 @@ private final TouristService touristService;
         model.addAttribute("touristAttraction", addAttraction);
         model.addAttribute("seasonTypes", Season.values());
         model.addAttribute("getAllCities", getAllCities);
+        model.addAttribute("getAllTags", Tags.values());
         return "addAttractions";
     }
 
     @PostMapping("/attractions/save")
-    public String updateAttractions(@ModelAttribute TouristAttraction t1) {
+    public String updateAttractions(@RequestParam(name = "tagsList", required = false) List<String> tagsList, @ModelAttribute TouristAttraction t1) {
+        List<Tags> tags = new ArrayList<>();
+        for(String tagName : tagsList) {
+            Tags tag = Tags.valueOf(tagName);
+            tags.add(tag);
+        }
+        t1.setTagsList(tags);
         touristService.addTouristAttraction(t1);
         return "redirect:/updatedlist";
     }
 
-        @GetMapping("/attractions/edit")
+    @GetMapping("/attractions/edit")
     public String updateAttraction(Model model) {
         List<TouristAttraction> getAllAttractions = touristService.getAllAttractions();
         List<String> getAllCities = touristService.getAllCities();
@@ -72,11 +80,17 @@ private final TouristService touristService;
         model.addAttribute("getAllAttractions", getAllAttractions);
         model.addAttribute("getAllCities", getAllCities);
         model.addAttribute("updateAttraction", updateAttraction);
+        model.addAttribute("getAllTags", Tags.values());
         return "updateAttraction";
     }
 
     @PostMapping("/attractions/update")
-    public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, Model model) {
+    public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, Model model, @RequestParam(name = "tagsList", required = false) List<String> tagsList) {
+        List<Tags> tags = new ArrayList<>();
+        for(String tagName : tagsList) {
+            Tags tag = Tags.valueOf(tagName);
+            tags.add(tag);
+        }
         TouristAttraction updated = touristService.renameAttraction(updateAttraction);
         return "redirect:/updatedlist";
     }

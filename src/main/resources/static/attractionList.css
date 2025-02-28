@@ -1,14 +1,17 @@
 body {
-
     padding: 0;
     padding-top: 125px;
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #a2c2e5, #f7d1c6, #ffffff);
     background-size: 400% 400%;
+    height: 100vh; /* Use viewport height */
+    display: flex;
+    flex-direction: column;
 
 }
-
-
+main {
+    flex: 1; /* This makes the main content take up the remaining space */
+}
 
 .section {
     display: grid;
@@ -52,6 +55,10 @@ body {
 }
 .description {
     max-width: 70%;
+}
+
+button {
+
 }
 
 
@@ -290,5 +297,73 @@ footer and navbar*/
     font-weight: bold;
 
 }
+.button-87 {
+margin: 10px;
+padding: 15px 30px;
+text-align: center;
+text-transform: uppercase;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+border-radius: 10px;
+display: block;
+border: 0px;
+font-weight: 700;
+box-shadow: 0px 0px 14px -7px #f09819;
+background-image: linear-gradient(45deg, #90b9e6 0%, #f6c1b2 51%, #ffffff  100%);
+cursor: pointer;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+}
+
+.button-87:hover {
+background-position: right center;
+color: #fff;
+text-decoration: none;
+}
+
+
+.button-87:active {
+transform: scale(0.95);
+}
+
+.button-87.delete {
+    background-image: linear-gradient(45deg, #d56c7a 0%, #f4a1b2 51%, #f7d1c6 100%);
+    box-shadow: 0px 0px 14px -7px #c64f56;
+    color: #2c2c2c;
+}
+
+.button-87.edit {
+    background-image: linear-gradient(45deg, #f29c11 0%, #f7c78a 51%, #fce1a3 100%);
+    box-shadow: 0px 0px 14px -7px #e67e22;
+}
+
+.button-87.tags {
+    background-image: linear-gradient(45deg, #a2c2e5 0%, #c3d9ef 51%, #e4f1fd 100%);
+    box-shadow: 0px 0px 14px -7px #7a99c7;
+}
+
+a {
+    color: #2c2c2c;
+    text-decoration: none;
+}
+
+
+
+
+.deleteeditcontainer {
+    display: flex;
+}
+.buttonsoverallcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonsoverallcontainer a {
+    display: block;
+    width: 100%;
+}
+
 
 
