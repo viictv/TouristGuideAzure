@@ -60,7 +60,7 @@ class TouristControllerTest {
         touristAttraction.setImgPath("sample");
         touristAttraction.setDescription("sample");
         touristAttraction.setCity("sample");
-        touristAttraction.set
+
 
         mockMvc.perform(post("/add")
 

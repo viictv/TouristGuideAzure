@@ -23,7 +23,7 @@ public class TouristRepository {
         return touristAttractions;
     }
 
-    public void initAttractions() {
+    private void initAttractions() {
             touristAttractions.add(new TouristAttraction(
                     "Tivoli",
                     "Tivoli er en af verdens ældste forlystelsesparker, beliggende i hjertet af København. Parken tilbyder en blanding af spændende forlystelser, smukke haver, koncerter og teaterforestillinger, hvilket gør det til et ideelt sted for både familier og turister, der ønsker en sjov og magisk oplevelse.",
@@ -87,13 +87,13 @@ public class TouristRepository {
 
     public TouristAttraction renameAttraction (TouristAttraction newTouristAttraction) {
         TouristAttraction t1 = null;
-        for(TouristAttraction i : getTouristAttractions()) {
-            if(i.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
-                i.setDescription(newTouristAttraction.getDescription());
-                i.setImgPath(newTouristAttraction.getImgPath());
-                i.setSeason(newTouristAttraction.getSeason());
-                i.setTagsList(newTouristAttraction.getTagsList());
-                t1 = i;
+        for(TouristAttraction touristAttraction : getTouristAttractions()) {
+            if(touristAttraction.getName().equalsIgnoreCase(newTouristAttraction.getName())) {
+                touristAttraction.setDescription(newTouristAttraction.getDescription());
+                touristAttraction.setImgPath(newTouristAttraction.getImgPath());
+                touristAttraction.setSeason(newTouristAttraction.getSeason());
+                touristAttraction.setTagsList(newTouristAttraction.getTagsList());
+                t1 = touristAttraction;
             }
         }
         return t1;
@@ -108,10 +108,10 @@ public class TouristRepository {
     }
 
     public TouristAttraction removeAttraction(String name) {
-        for(TouristAttraction i : touristAttractions) {
-            if(i.getName().equalsIgnoreCase(name)) {
-                touristAttractions.remove(i);
-                return i;
+        for(TouristAttraction touristAttraction : touristAttractions) {
+            if(touristAttraction.getName().equalsIgnoreCase(name)) {
+                touristAttractions.remove(touristAttraction);
+                return touristAttraction;
             }
         }
         return null;
@@ -137,7 +137,7 @@ public class TouristRepository {
         return null;
     }
 
-    public void initCities() {
+    private void initCities() {
         allCities.add("København Ø");
         allCities.add("København V");
         allCities.add("Søborg");

@@ -85,11 +85,13 @@ private final TouristService touristService;
     }
 
     @PostMapping("/attractions/update")
-    public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, Model model, @RequestParam(name = "tagsList", required = false) List<String> tagsList) {
+    public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, @RequestParam(name = "tagsList", required = false) List<String> tagsList) {
         List<Tags> tags = new ArrayList<>();
-        for(String tagName : tagsList) {
-            Tags tag = Tags.valueOf(tagName);
-            tags.add(tag);
+        if(tagsList != null) {
+            for(String tagName : tagsList) {
+                Tags tag = Tags.valueOf(tagName);
+                tags.add(tag);
+            }
         }
         TouristAttraction updated = touristService.renameAttraction(updateAttraction);
         return "redirect:/updatedlist";
