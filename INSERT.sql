@@ -1,4 +1,4 @@
-INSERT INTO touristguide.attraction (NAME, DESCRIPTION, IMAGE_PATH)
+/*INSERT INTO touristguide.attraction (NAME, DESCRIPTION, IMAGE_PATH)
 VALUES
 ("Tivoli", 
 "Tivoli er en af verdens ældste forlystelsesparker, beliggende i hjertet af København. 
@@ -67,3 +67,4 @@ VALUES
 
 
 
+*/

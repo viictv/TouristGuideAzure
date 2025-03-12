@@ -1,4 +1,4 @@
-CREATE DATABASE TouristGuide;
+/*CREATE DATABASE TouristGuide;
 
 CREATE TABLE attraction (
 ID int NOT NULL auto_increment PRIMARY KEY,
@@ -27,3 +27,4 @@ CREATE TABLE city (
 CITY_ID int NOT NULL auto_increment PRIMARY KEY,
 CITY_NAME VARCHAR(50) NOT NULL
 );
+*/

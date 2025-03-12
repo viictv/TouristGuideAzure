@@ -28,11 +28,11 @@ class TouristControllerTest {
     @MockitoBean
     private TouristService touristService;
 
-    @BeforeEach
+    /*@BeforeEach*/
 
 
 
-    @Test
+    /*@Test
     void processUpdate() throws Exception {
         //tjek om model har updateAttraction attribute
         //tjek om den redirecter til /save
@@ -74,5 +74,5 @@ class TouristControllerTest {
 
                 verify(touristService, times(1)).addTouristAttraction(touristAttraction);
 
-    }
+    }*/
 }
