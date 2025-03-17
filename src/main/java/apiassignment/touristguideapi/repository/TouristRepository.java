@@ -6,7 +6,11 @@ import java.util.List;
 import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.model.Tags;
 import apiassignment.touristguideapi.model.TouristAttraction;
+import apiassignment.touristguideapi.rowmappers.AttractionRowMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Repository
 public class TouristRepository {
@@ -14,13 +18,26 @@ public class TouristRepository {
     private final List<TouristAttraction> touristAttractions = new ArrayList<>();
     private final List<String> allCities = new ArrayList<>();
 
+    private final JdbcTemplate jdbcTemplate;
+
+
     public TouristRepository() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource(
+                System.getenv("DATABASE_URL"),
+                System.getenv("USERNAME"),
+                System.getenv("PASSWORD")
+        );
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
         initAttractions();
         initCities();
     }
 
+
     public List<TouristAttraction> getTouristAttractions() {
-        return touristAttractions;
+        String sql = "SELECT * FROM attraction";
+        return jdbcTemplate.query(sql, new AttractionRowMapper());
+        /*return touristAttractions;*/
     }
 
     private void initAttractions() {

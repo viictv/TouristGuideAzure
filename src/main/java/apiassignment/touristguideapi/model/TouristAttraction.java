@@ -19,6 +19,11 @@ public class TouristAttraction {
         this.city = city;
         this.tagsList = tagsList;
     }
+    public TouristAttraction(String name, String description, String imgPath) {
+        this.name = name;
+        this.description = description;
+        this.imgPath = imgPath;
+    }
 
     public TouristAttraction() {
 
