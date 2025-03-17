@@ -1,6 +1,7 @@
 package apiassignment.touristguideapi.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import apiassignment.touristguideapi.model.Season;
@@ -8,6 +9,7 @@ import apiassignment.touristguideapi.model.Tags;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import apiassignment.touristguideapi.rowmappers.AttractionRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -35,8 +37,13 @@ public class TouristRepository {
 
 
     public List<TouristAttraction> getTouristAttractions() {
-        String sql = "SELECT * FROM attraction";
-        return jdbcTemplate.query(sql, new AttractionRowMapper());
+        try {
+            String sql = "SELECT * FROM attraction";
+            return jdbcTemplate.query(sql, new AttractionRowMapper());
+        } catch (DataAccessException e) {
+            System.out.println(e);
+            return Collections.emptyList();
+        }
         /*return touristAttractions;*/
     }
 
