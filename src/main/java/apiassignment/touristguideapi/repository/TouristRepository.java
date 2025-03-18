@@ -153,8 +153,6 @@ public class TouristRepository {
     }
 
     public TouristAttraction removeAttraction(String name) {
-
-
         TouristAttraction toDelete = getAttractionByName(name);
         if (toDelete != null) {
             String sql = "DELETE FROM attraction WHERE NAME = ?";
