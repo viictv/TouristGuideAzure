@@ -1,8 +1,9 @@
 package apiassignment.touristguideapi.service;
 
-import apiassignment.touristguideapi.model.Tags;
+import apiassignment.touristguideapi.model.CityModel;
+import apiassignment.touristguideapi.model.SeasonModel;
+import apiassignment.touristguideapi.model.TagsModel;
 import apiassignment.touristguideapi.model.TouristAttraction;
-import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,19 @@ public class TouristService {
         return touristRepository.getTouristAttractions();
     }
 
-    public List<String> getAllCities() {
+    public List<CityModel> getAllCities() {
         return touristRepository.getCities();
     }
+    public List<SeasonModel> getAllSeasons() {
+        return touristRepository.getSeasons();
+    }
+
+    public List<TagsModel> getAllTags() {
+        return touristRepository.getTags();
+    }
+
+
+
 
     public TouristAttraction getAttractionByName (String name) {
         return touristRepository.getAttractionByName(name);
@@ -42,13 +53,13 @@ public class TouristService {
         return touristRepository.removeAttraction(name);
     }
 
-    public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
+    public ArrayList<TouristAttraction> getAttractionBySeason(SeasonModel season) {
         return touristRepository.getAttractionBySeason(season);
     }
 
-    //Sofie cooking
-    public List<Tags> getTagsByAttractionName(String attractionName) {
+    /*//Sofie cooking
+    public List<TagsModel> getTagsByAttractionName(String attractionName) {
         return touristRepository.getTagsByAttractionName(attractionName);
-    }
+    }*/
 
 }

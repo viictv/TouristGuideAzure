@@ -3,15 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
-
+    private int id;
     private String name;
     private String description;
-    private Season season;
     private String imgPath;
-    private String city;
-    private List<Tags> tagsList = new ArrayList<>();
+    private SeasonModel season;
+    private CityModel city;
+    private List<TagsModel> tagsList = new ArrayList<>();
 
-    public TouristAttraction(String name, String description, Season season, String imgPath, String city, List<Tags> tagsList) {
+    public TouristAttraction(String name, String description, SeasonModel season, String imgPath, CityModel city, List<TagsModel> tagsList) {
         this.name = name;
         this.description = description;
         this.season = season;
@@ -27,6 +27,14 @@ public class TouristAttraction {
 
     public TouristAttraction() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,11 +54,11 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public Season getSeason() {
+    public SeasonModel getSeason() {
         return season;
     }
 
-    public void setSeason(Season season) {
+    public void setSeason(SeasonModel season) {
         this.season = season;
     }
 
@@ -62,19 +70,19 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
-    public String getCity() {
+    public CityModel getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(CityModel city) {
         this.city = city;
     }
 
-    public List<Tags> getTagsList() {
+    public List<TagsModel> getTagsList() {
         return tagsList;
     }
 
-    public void setTagsList(List<Tags> tagsList) {
+    public void setTagsList(List<TagsModel> tagsList) {
         this.tagsList = tagsList;
     }
 
