@@ -121,6 +121,7 @@ public class TouristRepository {
         return t1;
     }
 
+    /*
     public TouristAttraction renameAttraction (TouristAttraction newTouristAttraction) {
         TouristAttraction t1 = null;
         for(TouristAttraction touristAttraction : getTouristAttractions()) {
@@ -133,6 +134,27 @@ public class TouristRepository {
             }
         }
         return t1;
+    }
+
+     */
+
+    public TouristAttraction renameAttraction(TouristAttraction newTouristAttraction) {
+        String sql = "UPDATE tourist_attraction SET description = ?, img_path = ?, season = ?, tags_list = ? WHERE name = ?";
+
+        int rowsUpdated = jdbcTemplate.update(sql,
+                newTouristAttraction.getDescription(),
+                newTouristAttraction.getImgPath(),
+                newTouristAttraction.getSeason(),
+                newTouristAttraction.getTagsList(),
+                newTouristAttraction.getName()
+        );
+
+        if (rowsUpdated > 0) {
+            System.out.println("Attraction updated: " + newTouristAttraction.getName());
+            return newTouristAttraction;
+        } else {
+            throw new RuntimeException("Attraction not found: " + newTouristAttraction.getName());
+        }
     }
 
     public TouristAttraction getAttractionByName (String name) {
