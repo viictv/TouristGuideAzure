@@ -1,9 +1,6 @@
 package apiassignment.touristguideapi.controller;
 
-import apiassignment.touristguideapi.model.CityModel;
-import apiassignment.touristguideapi.model.SeasonModel;
-import apiassignment.touristguideapi.model.TagsModel;
-import apiassignment.touristguideapi.model.TouristAttraction;
+import apiassignment.touristguideapi.model.*;
 import apiassignment.touristguideapi.service.TouristService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,15 +86,24 @@ private final TouristService touristService;
     }
 
     @PostMapping("/attractions/update")
-    public String processUpdate(@ModelAttribute("updateAttraction") TouristAttraction updateAttraction, @RequestParam(name = "tagsList", required = false) List<String> tagsList) {
-        List<Tags> tags = new ArrayList<>();
-        if(tagsList != null) {
-            for(String tagName : tagsList) {
-                Tags tag = Tags.valueOf(tagName);
-                tags.add(tag);
-            }
+    public String processUpdate(@ModelAttribute TouristAttractionDTO dto) {
+        TouristAttraction updatedAttraction = new TouristAttraction();
+
+        updatedAttraction.setId(dto.getId());
+        updatedAttraction.setName(dto.getName());
+        updatedAttraction.setDescription(dto.getDescription());
+        updatedAttraction.setImgPath(dto.getImgPath());
+
+        updatedAttraction.setSeason(touristService.getSeasonFromID(dto.getId()));
+        updatedAttraction.setCity(touristService.getCityFromID(dto.getCityID()));
+
+        List<TagsModel> tags = new ArrayList<>();
+        for (Integer i : dto.getTagsID()) {
+            tags.add(touristService.getTagsFromID(i));
         }
-        TouristAttraction updated = touristService.renameAttraction(updateAttraction);
+        updatedAttraction.setTagsList(tags);
+
+        touristService.updateAttraction(updatedAttraction);
         return "redirect:/updatedlist";
     }
 
@@ -112,12 +118,12 @@ private final TouristService touristService;
         return "updatedlist";
     }
 
-    @GetMapping("/seasons/{name}")
+    /*@GetMapping("/seasons/{name}")
     public String getAttractionBySeason(@PathVariable SeasonModel name, Model model) {
         List<TouristAttraction> attractionBySeason = touristService.getAttractionBySeason(name);
         model.addAttribute("attractionBySeason", attractionBySeason);
         return "attractionBySeason";
-    }
+    }*/
 }
 
 

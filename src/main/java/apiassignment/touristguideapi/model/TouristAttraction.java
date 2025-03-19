@@ -25,8 +25,19 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
+    public TouristAttraction(String name, String description, String imgPath, SeasonModel season, CityModel city) {
+        this.name = name;
+        this.description = description;
+        this.imgPath = imgPath;
+        this.season = season;
+        this.city = city;
+    }
+
     public TouristAttraction() {
 
+    }
+
+    public TouristAttraction(String name, String description, String imgpath, int seasonID, int cityID) {
     }
 
     public int getId() {

@@ -54,13 +54,6 @@ public class TouristRepository {
     public List<TouristAttraction> getTouristAttractions() {
         String sql = "SELECT * FROM attraction";
         return jdbcTemplate.query(sql, new AttractionRowMapper());
-        /*try {
-
-        } catch (DataAccessException e) {
-            System.out.println(e);
-            return Collections.emptyList();
-        }*/
-        /*return touristAttractions;*/
     }
 
     /*private void initAttractions() {
@@ -166,13 +159,6 @@ public class TouristRepository {
 
         if (templist.isEmpty() || templist == null) return null;
         return templist.get(0);
-
-
-        /*for (TouristAttraction t1 : touristAttractions) {
-            if (t1.getName().equalsIgnoreCase(name))
-                return t1;
-        }
-        return null;*/
     }
 
     public TouristAttraction removeAttraction(String name) {
@@ -182,13 +168,6 @@ public class TouristRepository {
             jdbcTemplate.update(sql, name);
         }
         return toDelete;
-
-        /*for(TouristAttraction touristAttraction : touristAttractions) {
-            if(touristAttraction.getName().equalsIgnoreCase(name)) {
-                touristAttractions.remove(touristAttraction);
-                return touristAttraction;
-            }
-        }*/
     }
 
     /*public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
@@ -204,8 +183,6 @@ public class TouristRepository {
         }
         return newList;
     }*/
-
-
 
     /*public List<TagsModel> getTagsByAttractionID(int attractionID) {
         String sql = """
@@ -229,6 +206,55 @@ public class TouristRepository {
         String sql = "SELECT * FROM tags";
         return jdbcTemplate.query(sql, new TagsRowMapper());
     }
+
+    public SeasonModel getSeasonFromID (int id) {
+        String sql = "SELECT * FROM season WHERE SEASON_ID = ?";
+
+        return jdbcTemplate.query(sql, new SeasonRowMapper(), id).get(0);
+    }
+
+    public CityModel getCityFromID (int id) {
+        String sql = "SELECT * FROM city WHERE CITY_ID = ?";
+
+        return jdbcTemplate.query(sql, new CityRowMapper(), id).get(0);
+    }
+
+    public TagsModel getTagsFromID (int id) {
+        String sql = """
+                SELECT *
+                FROM tags
+                WHERE TAGS_ID = ?
+        """;
+        return jdbcTemplate.query(sql, new TagsRowMapper(), id).get(0);
+    }
+
+    public TouristAttraction updateAttraction (TouristAttraction t1) {
+
+        String sqlDeleteOldTags = """
+                DELETE attraction_tags
+                WHERE ATTRACTION_ID = ?
+                """;
+        jdbcTemplate.update(sqlDeleteOldTags, t1.getId());
+
+        String insertNewTags = """
+                INSERT INTO attraction_tags (ATTRACTION_ID, TAGS_ID)
+                VALUES (?, ?)
+                """;
+        for (TagsModel tags : t1.getTagsList()) {
+            jdbcTemplate.update(insertNewTags, t1.getId(), tags.getId());
+        }
+
+        String sql = """
+                UPDATE attraction SET NAME = ?, DESCRIPTION = ?, IMAGE_PATH = ?, Season_ID = ?, City_ID = ?
+                WHERE ID = ?
+                """;
+        jdbcTemplate.update(sql, t1.getName(), t1.getDescription(), t1.getImgPath(), t1.getSeason().getId(), t1.getCity().getId(), t1.getId());
+
+        return t1;
+    }
+
+
+
 
 
 

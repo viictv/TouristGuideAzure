@@ -34,6 +34,19 @@ public class TouristService {
         return touristRepository.getTags();
     }
 
+    public SeasonModel getSeasonFromID (int id) {
+        return touristRepository.getSeasonFromID(id);
+    }
+    public CityModel getCityFromID (int id) {
+        return touristRepository.getCityFromID(id);
+    }
+    public TagsModel getTagsFromID (int id) {
+        return touristRepository.getTagsFromID(id);
+    }
+
+    public TouristAttraction updateAttraction (TouristAttraction t1) {
+        return touristRepository.updateAttraction(t1);
+    }
 
 
 
@@ -53,9 +66,9 @@ public class TouristService {
         return touristRepository.removeAttraction(name);
     }
 
-    public ArrayList<TouristAttraction> getAttractionBySeason(SeasonModel season) {
+    /*public ArrayList<TouristAttraction> getAttractionBySeason(SeasonModel season) {
         return touristRepository.getAttractionBySeason(season);
-    }
+    }*/
 
     /*//Sofie cooking
     public List<TagsModel> getTagsByAttractionName(String attractionName) {

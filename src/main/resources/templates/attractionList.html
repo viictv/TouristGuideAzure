@@ -18,7 +18,7 @@
 
     <div th:each="i : ${attractions}" class="allattractionscontainer">
         <h1 th:text="${i.getName()}"></h1>
-        <img th:src="@{${i.imgPath}}" class="imgbox" />
+        <img th:src="@{${i.getImgPath()}}" class="imgbox" />
         <p th:text="${i.getDescription()}" class="description"></p>
         <p th:text="${i.getSeason()}" class="season"></p>
        <!--Her laver vi en knap-->
