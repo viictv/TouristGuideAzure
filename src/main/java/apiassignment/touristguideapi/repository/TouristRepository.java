@@ -1,12 +1,19 @@
 package apiassignment.touristguideapi.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import apiassignment.touristguideapi.model.Season;
 import apiassignment.touristguideapi.model.Tags;
 import apiassignment.touristguideapi.model.TouristAttraction;
+import apiassignment.touristguideapi.rowmappers.AttractionRowMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Repository
 public class TouristRepository {
@@ -14,13 +21,42 @@ public class TouristRepository {
     private final List<TouristAttraction> touristAttractions = new ArrayList<>();
     private final List<String> allCities = new ArrayList<>();
 
+    private final JdbcTemplate jdbcTemplate;
+
+    @Value("${spring.datasource.url}")
+    String url;
+    @Value("${spring.datasource.username}")
+    String username;
+    @Value("${spring.datasource.password}")
+    String password;
+
     public TouristRepository() {
+        /*DriverManagerDataSource dataSource = new DriverManagerDataSource(
+                url, username, password
+        );*/
+        DriverManagerDataSource dataSource = new DriverManagerDataSource(
+                System.getenv("PROD_DATABASE_URL"),
+                System.getenv("PROD_USERNAME"),
+                System.getenv("PROD_PASSWORD")
+        );
+
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
         initAttractions();
         initCities();
     }
 
+
     public List<TouristAttraction> getTouristAttractions() {
-        return touristAttractions;
+        String sql = "SELECT * FROM attraction";
+        return jdbcTemplate.query(sql, new AttractionRowMapper());
+        /*try {
+
+        } catch (DataAccessException e) {
+            System.out.println(e);
+            return Collections.emptyList();
+        }*/
+        /*return touristAttractions;*/
     }
 
     private void initAttractions() {
@@ -100,21 +136,36 @@ public class TouristRepository {
     }
 
     public TouristAttraction getAttractionByName (String name) {
-        for (TouristAttraction t1 : touristAttractions) {
+
+
+        String sql = "SELECT * FROM attraction WHERE name = ?";
+        List<TouristAttraction> templist = jdbcTemplate.query(sql, new AttractionRowMapper(), name);
+
+        if (templist.isEmpty() || templist == null) return null;
+        return templist.get(0);
+
+
+        /*for (TouristAttraction t1 : touristAttractions) {
             if (t1.getName().equalsIgnoreCase(name))
                 return t1;
         }
-        return null;
+        return null;*/
     }
 
     public TouristAttraction removeAttraction(String name) {
-        for(TouristAttraction touristAttraction : touristAttractions) {
+        TouristAttraction toDelete = getAttractionByName(name);
+        if (toDelete != null) {
+            String sql = "DELETE FROM attraction WHERE NAME = ?";
+            jdbcTemplate.update(sql, name);
+        }
+        return toDelete;
+
+        /*for(TouristAttraction touristAttraction : touristAttractions) {
             if(touristAttraction.getName().equalsIgnoreCase(name)) {
                 touristAttractions.remove(touristAttraction);
                 return touristAttraction;
             }
-        }
-        return null;
+        }*/
     }
 
     public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
@@ -127,7 +178,6 @@ public class TouristRepository {
         return newList;
     }
 
-    //Sofie cooking
     public List<Tags> getTagsByAttractionName(String attractionName) {
         for (TouristAttraction attraction : touristAttractions) {
             if (attraction.getName().equalsIgnoreCase(attractionName)) {
