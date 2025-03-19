@@ -7,16 +7,16 @@ public class TouristAttraction {
     private String name;
     private String description;
     private String imgPath;
-    private SeasonModel season;
-    private CityModel city;
+    private int seasonId;
+    private int cityId;
     private List<TagsModel> tagsList = new ArrayList<>();
 
-    public TouristAttraction(String name, String description, SeasonModel season, String imgPath, CityModel city, List<TagsModel> tagsList) {
+    public TouristAttraction(String name, String description, int seasonId, String imgPath, int cityId, List<TagsModel> tagsList) {
         this.name = name;
         this.description = description;
-        this.season = season;
+        this.seasonId  = seasonId;
         this.imgPath = imgPath;
-        this.city = city;
+        this.cityId = cityId;
         this.tagsList = tagsList;
     }
     public TouristAttraction(String name, String description, String imgPath) {
@@ -54,12 +54,12 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public SeasonModel getSeason() {
-        return season;
+    public int getSeasonId() {
+        return seasonId;
     }
 
-    public void setSeason(SeasonModel season) {
-        this.season = season;
+    public void setSeasonId(int seasonId) {
+        this.seasonId = seasonId;
     }
 
     public String getImgPath() {
@@ -70,12 +70,12 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
-    public CityModel getCity() {
-        return city;
+    public int getCityId() {
+        return cityId;
     }
 
-    public void setCity(CityModel city) {
-        this.city = city;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
     public List<TagsModel> getTagsList() {
@@ -91,9 +91,9 @@ public class TouristAttraction {
         return "TouristAttraction{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", season=" + season +
+                ", season=" + seasonId +
                 ", imgPath='" + imgPath + '\'' +
-                ", city='" + city + '\'' +
+                ", city='" + cityId + '\'' +
                 ", tagsList=" + tagsList +
                 '}';
     }

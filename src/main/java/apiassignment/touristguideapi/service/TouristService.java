@@ -34,7 +34,9 @@ public class TouristService {
         return touristRepository.getTags();
     }
 
-
+    public TagsModel getTagByName(String tagName) {
+        return touristRepository.getTagByName(tagName);
+    }
 
 
     public TouristAttraction getAttractionByName (String name) {
@@ -53,7 +55,7 @@ public class TouristService {
         return touristRepository.removeAttraction(name);
     }
 
-    public ArrayList<TouristAttraction> getAttractionBySeason(SeasonModel season) {
+    public ArrayList<TouristAttraction> getAttractionBySeason(int season) {
         return touristRepository.getAttractionBySeason(season);
     }
 

@@ -19,6 +19,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
+
 @Repository
 public class TouristRepository {
 
@@ -27,24 +29,13 @@ public class TouristRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    @Value("${spring.datasource.url}")
-    String url;
-    @Value("${spring.datasource.username}")
-    String username;
-    @Value("${spring.datasource.password}")
-    String password;
-
     public TouristRepository() {
         /*DriverManagerDataSource dataSource = new DriverManagerDataSource(
                 url, username, password
         );*/
-        DriverManagerDataSource dataSource = new DriverManagerDataSource(
-                System.getenv("PROD_DATABASE_URL"),
-                System.getenv("PROD_USERNAME"),
-                System.getenv("PROD_PASSWORD")
-        );
+        DataSource dataSource = new DriverManagerDataSource(
+                "jdbc:mysql://touristguidedata.mysql.database.azure.com:3306/touristguide", "viictator", "Sejtpassword123");
 
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         /*initAttractions();
         initCities();*/
@@ -120,7 +111,14 @@ public class TouristRepository {
 
     }*/
 
+    public TagsModel getTagByName(String tagName) {
+        String sql = "SELECT * FROM tags WHERE name = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{tagName}, new TagsRowMapper());
+    }
+
+
     public TouristAttraction addNewAttraction (TouristAttraction t1) {
+
         String sql = "INSERT INTO attraction (NAME, DESCRIPTION, IMAGE_PATH, Season_ID, City_ID) VALUES (?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -129,8 +127,8 @@ public class TouristRepository {
             ps.setString(1, t1.getName());
             ps.setString(2, t1.getDescription());
             ps.setString(3, t1.getImgPath());
-            ps.setInt(4, t1.getSeason().getId());
-            ps.setInt(5, t1.getCity().getId());
+            ps.setInt(4, t1.getSeasonId());
+            ps.setInt(5, t1.getCityId());
 
             return ps;
         }, keyHolder);
@@ -162,13 +160,13 @@ public class TouristRepository {
      */
 
     public TouristAttraction renameAttraction(TouristAttraction newTouristAttraction) {
-        String sql = "UPDATE touristguide_attraction SET description = ?, img_path = ?, season = ?, tags_list = ? WHERE name = ?";
+        String sql = "UPDATE attraction SET description = ?, image_path = ?, season_ID = ?, city_ID = ? WHERE name = ?";
 
         int rowsUpdated = jdbcTemplate.update(sql,
                 newTouristAttraction.getDescription(),
                 newTouristAttraction.getImgPath(),
-                newTouristAttraction.getSeason(),
-                newTouristAttraction.getTagsList(),
+                newTouristAttraction.getSeasonId(),
+                newTouristAttraction.getCityId(),
                 newTouristAttraction.getName()
         );
 
@@ -213,19 +211,18 @@ public class TouristRepository {
         }*/
     }
 
-    /*public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
+    public ArrayList<TouristAttraction> getAttractionBySeason(int season) {
 
         String sql = "SELECT * attraction WHERE Season_ID = ?";
-        jdbcTemplate.upd
 
         ArrayList<TouristAttraction> newList = new ArrayList<>();
         for(TouristAttraction t1 : touristAttractions) {
-            if(t1.getSeason().equals(season)) {
+            if(t1.getSeasonId() == season) {
                 newList.add(t1);
             }
         }
         return newList;
-    }*/
+    }
 
 
 
