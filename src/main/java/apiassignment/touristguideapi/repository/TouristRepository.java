@@ -139,7 +139,7 @@ public class TouristRepository {
      */
 
     public TouristAttraction renameAttraction(TouristAttraction newTouristAttraction) {
-        String sql = "UPDATE tourist_attraction SET description = ?, img_path = ?, season = ?, tags_list = ? WHERE name = ?";
+        String sql = "UPDATE touristguide_attraction SET description = ?, img_path = ?, season = ?, tags_list = ? WHERE name = ?";
 
         int rowsUpdated = jdbcTemplate.update(sql,
                 newTouristAttraction.getDescription(),
