@@ -1,17 +1,21 @@
 package apiassignment.touristguideapi.repository;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import apiassignment.touristguideapi.model.Season;
-import apiassignment.touristguideapi.model.Tags;
+import apiassignment.touristguideapi.model.CityModel;
+import apiassignment.touristguideapi.model.SeasonModel;
+import apiassignment.touristguideapi.model.TagsModel;
 import apiassignment.touristguideapi.model.TouristAttraction;
 import apiassignment.touristguideapi.rowmappers.AttractionRowMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import apiassignment.touristguideapi.rowmappers.CityRowMapper;
+import apiassignment.touristguideapi.rowmappers.SeasonRowMapper;
+import apiassignment.touristguideapi.rowmappers.TagsRowMapper;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -42,8 +46,8 @@ public class TouristRepository {
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-        initAttractions();
-        initCities();
+        /*initAttractions();
+        initCities();*/
     }
 
 
@@ -59,7 +63,7 @@ public class TouristRepository {
         /*return touristAttractions;*/
     }
 
-    private void initAttractions() {
+    /*private void initAttractions() {
             touristAttractions.add(new TouristAttraction(
                     "Tivoli",
                     "Tivoli er en af verdens ældste forlystelsesparker, beliggende i hjertet af København. Parken tilbyder en blanding af spændende forlystelser, smukke haver, koncerter og teaterforestillinger, hvilket gør det til et ideelt sted for både familier og turister, der ønsker en sjov og magisk oplevelse.",
@@ -114,10 +118,29 @@ public class TouristRepository {
                     List.of(Tags.ADRENALIN, Tags.FORLYSTELSER)
             ));
 
-    }
+    }*/
 
     public TouristAttraction addNewAttraction (TouristAttraction t1) {
-        touristAttractions.add(t1);
+        String sql = "INSERT INTO attraction (NAME, DESCRIPTION, IMAGE_PATH, Season_ID, City_ID) VALUES (?, ?, ?, ?, ?)";
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, t1.getName());
+            ps.setString(2, t1.getDescription());
+            ps.setString(3, t1.getImgPath());
+            ps.setInt(4, t1.getSeason().getId());
+            ps.setInt(5, t1.getCity().getId());
+
+            return ps;
+        }, keyHolder);
+
+        t1.setId(keyHolder.getKey().intValue());
+
+        String tagsSql = "INSERT INTO attraction_tags (ATTRACTION_ID, TAGS_ID) VALUES (?, ?)";
+        for (TagsModel tag : t1.getTagsList()) {
+            jdbcTemplate.update(tagsSql, t1.getId(), tag.getId());
+        }
         return t1;
     }
 
@@ -190,7 +213,11 @@ public class TouristRepository {
         }*/
     }
 
-    public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
+    /*public ArrayList<TouristAttraction> getAttractionBySeason(Season season) {
+
+        String sql = "SELECT * attraction WHERE Season_ID = ?";
+        jdbcTemplate.upd
+
         ArrayList<TouristAttraction> newList = new ArrayList<>();
         for(TouristAttraction t1 : touristAttractions) {
             if(t1.getSeason().equals(season)) {
@@ -198,28 +225,35 @@ public class TouristRepository {
             }
         }
         return newList;
+    }*/
+
+
+
+    /*public List<TagsModel> getTagsByAttractionID(int attractionID) {
+        String sql = """
+                    SELECT t.*
+                    FROM tags t
+                    JOIN attraction_tags at ON t.TagsID = at.TagsID
+                    WHERE at.AttractionsAttractionID = ?""";
+    }*/
+
+    public List<CityModel> getCities () {
+        String sql = "SELECT * FROM city";
+        return jdbcTemplate.query(sql, new CityRowMapper());
     }
 
-    public List<Tags> getTagsByAttractionName(String attractionName) {
-        for (TouristAttraction attraction : touristAttractions) {
-            if (attraction.getName().equalsIgnoreCase(attractionName)) {
-                return attraction.getTagsList();
-            }
-        }
-        return null;
+    public List<SeasonModel> getSeasons () {
+        String sql = "SELECT * FROM season";
+        return jdbcTemplate.query(sql, new SeasonRowMapper());
     }
 
-    private void initCities() {
-        allCities.add("København Ø");
-        allCities.add("København V");
-        allCities.add("Søborg");
-        allCities.add("Ishøj");
-        allCities.add("Brønshæj");
+    public List<TagsModel> getTags () {
+        String sql = "SELECT * FROM tags";
+        return jdbcTemplate.query(sql, new TagsRowMapper());
     }
 
-    public List<String> getCities() {
-        return allCities;
-    }
+
+
 
 
 
