@@ -37,6 +37,13 @@ public class TouristAttraction {
 
     }
 
+    public TouristAttraction(int id, String name, String description, String imgPath) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imgPath = imgPath;
+    }
+
     public TouristAttraction(String name, String description, String imgpath, int seasonID, int cityID) {
     }
 

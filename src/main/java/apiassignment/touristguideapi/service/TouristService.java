@@ -58,8 +58,12 @@ public class TouristService {
         return touristRepository.renameAttraction(newTouristAttraction);
     }
 
-    public TouristAttraction removeAttraction(String name) {
-        return touristRepository.removeAttraction(name);
+    public void removeAttraction(int id) {
+        touristRepository.removeAttraction(id);
+    }
+
+    public List<TagsModel> getTagsFromAttractionId (int id) {
+        return touristRepository.getTagsFromAttractionId(id);
     }
 
 }
