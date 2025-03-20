@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy JAR app to Azure Web App - Touristguide8
+name: Build and deploy JAR app to Azure Web App - TouristGuide8
 
 on:
   push:
@@ -21,15 +21,11 @@ jobs:
       - name: Set up Java version
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: 'java21'
           distribution: 'microsoft'
 
-      - name: Build with Maven (skip tests)
-        run: mvn clean install -DskipTests
-        env:
-          PROD_DATABASE_URL: ${{secrets.PROD_DATABASE_URL}}
-          PROD_USERNAME: ${{secrets.PROD_USERNAME}}
-          PROD_PASSWORD: ${{secrets.PROD_PASSWORD}}
+      - name: Build with Maven
+        run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -46,24 +42,25 @@ jobs:
     permissions:
       id-token: write #This is required for requesting the JWT
       contents: read #This is required for actions/checkout
-     
+  
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: java-app
-     
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D64DA59AAAF84F29B257249E0F3115A0 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_AAF9E6BC69A04254AB14DCD8D09303C6 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EE921996D9484DE29AF04B596B745D2B }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DF4FCCDC9ECF408B80F3F0108A5F0DC2 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_09F7D3060F5448098D4CF2476793FF76 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_ABF11EB77C0A430CB5C1CAE06648A69D }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Touristguide8'
+          app-name: 'TouristGuide8'
           slot-name: 'Production'
           package: '*.jar'
+          
