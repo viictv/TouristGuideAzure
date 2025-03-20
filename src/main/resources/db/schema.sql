@@ -5,15 +5,9 @@ CREATE TABLE touristguide.attraction (
     NAME VARCHAR(100) NOT NULL,
     DESCRIPTION VARCHAR(500) NOT NULL,
     IMAGE_PATH VARCHAR(500) NOT NULL,
-    Season_ID INT NOT NULL,
     City_ID INT NOT NULL,
-    FOREIGN KEY (Season_ID) REFERENCES touristguide.season(Season_ID)
 );
 
-CREATE TABLE season (
-SEASON_ID int NOT NULL auto_increment PRIMARY KEY,
-SEASON_NAME VARCHAR(50)
-);
 
 CREATE TABLE tags (
 TAGS_ID int NOT NULL auto_increment PRIMARY KEY,

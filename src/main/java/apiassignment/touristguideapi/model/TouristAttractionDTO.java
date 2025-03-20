@@ -8,11 +8,18 @@ public class TouristAttractionDTO {
     private String name;
     private String description;
     private String imgPath;
-    private int seasonID;
+    /*private int seasonID;*/
     private int cityID;
     private List<Integer> tagsID;
 
     public TouristAttractionDTO() {
+    }
+
+    public TouristAttractionDTO(String name, String description, String imgPath, int cityID) {
+        this.name = name;
+        this.description = description;
+        this.imgPath = imgPath;
+        this.cityID = cityID;
     }
 
     public int getId() {
@@ -47,13 +54,13 @@ public class TouristAttractionDTO {
         this.imgPath = imgPath;
     }
 
-    public int getSeasonID() {
+    /*public int getSeasonID() {
         return seasonID;
     }
 
     public void setSeasonID(int seasonID) {
         this.seasonID = seasonID;
-    }
+    }*/
 
     public int getCityID() {
         return cityID;
@@ -69,5 +76,17 @@ public class TouristAttractionDTO {
 
     public void setTagsID(List<Integer> tagsID) {
         this.tagsID = tagsID;
+    }
+
+    @Override
+    public String toString() {
+        return "TouristAttractionDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", cityID=" + cityID +
+                ", tagsID=" + tagsID +
+                '}';
     }
 }

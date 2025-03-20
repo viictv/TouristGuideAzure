@@ -1,4 +1,4 @@
-INSERT INTO touristguide.attraction (NAME, DESCRIPTION, IMAGE_PATH, Season_ID, City_ID)
+/*INSERT INTO touristguide.attraction (NAME, DESCRIPTION, IMAGE_PATH, Season_ID, City_ID)
 VALUES
     ("Tivoli",
      "Tivoli er en af verdens ældste forlystelsesparker, beliggende i hjertet af København.
@@ -35,11 +35,6 @@ VALUES
      "https://www.bonbonland.dk/content/dam/bbl/images/blog/Bedste%20rutchebane.jpg", 1, 3
     );
 
-INSERT INTO touristguide.season (SEASON_NAME)
-VALUES
-("Sommer"),
-("Vinter"),
-("Helårs");
 
 INSERT INTO touristguide.tags (TAGS_NAME)
 VALUES
@@ -72,3 +67,4 @@ VALUES
     (5, 8),
     (6, 1),
     (6, 9);
+*/

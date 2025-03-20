@@ -7,14 +7,14 @@ public class TouristAttraction {
     private String name;
     private String description;
     private String imgPath;
-    private SeasonModel season;
+    /*private SeasonModel season;*/
     private CityModel city;
     private List<TagsModel> tagsList = new ArrayList<>();
 
-    public TouristAttraction(String name, String description, SeasonModel season, String imgPath, CityModel city, List<TagsModel> tagsList) {
+    public TouristAttraction(String name, String description, /*SeasonModel season,*/ String imgPath, CityModel city, List<TagsModel> tagsList) {
         this.name = name;
         this.description = description;
-        this.season = season;
+        /*this.season = season;*/
         this.imgPath = imgPath;
         this.city = city;
         this.tagsList = tagsList;
@@ -25,11 +25,11 @@ public class TouristAttraction {
         this.imgPath = imgPath;
     }
 
-    public TouristAttraction(String name, String description, String imgPath, SeasonModel season, CityModel city) {
+    public TouristAttraction(String name, String description, String imgPath, /*SeasonModel season,*/ CityModel city) {
         this.name = name;
         this.description = description;
         this.imgPath = imgPath;
-        this.season = season;
+        /*this.season = season;*/
         this.city = city;
     }
 
@@ -65,13 +65,13 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public SeasonModel getSeason() {
+    /*public SeasonModel getSeason() {
         return season;
     }
 
     public void setSeason(SeasonModel season) {
         this.season = season;
-    }
+    }*/
 
     public String getImgPath() {
         return imgPath;
@@ -102,7 +102,6 @@ public class TouristAttraction {
         return "TouristAttraction{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", season=" + season +
                 ", imgPath='" + imgPath + '\'' +
                 ", city='" + city + '\'' +
                 ", tagsList=" + tagsList +

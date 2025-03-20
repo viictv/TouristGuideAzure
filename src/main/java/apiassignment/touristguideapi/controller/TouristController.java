@@ -46,25 +46,22 @@ private final TouristService touristService;
 
     @GetMapping("/attractions/add")
     public String addAttractions(Model model) {
-        TouristAttraction addAttraction = new TouristAttraction();
+        TouristAttractionDTO addAttraction = new TouristAttractionDTO();
         List<CityModel> getAllCities = touristService.getAllCities();
-        List<SeasonModel> getAllSeasons = touristService.getAllSeasons();
         List<TagsModel> getAllTags = touristService.getAllTags();
         model.addAttribute("touristAttraction", addAttraction);
-        model.addAttribute("seasonTypes", getAllSeasons);
         model.addAttribute("getAllCities", getAllCities);
         model.addAttribute("getAllTags", getAllTags);
         return "addAttractions";
     }
 
     @PostMapping("/attractions/save")
-    public String updateAttractions(@RequestParam(name = "tagsList", required = false) List<String> tagsList, @ModelAttribute TouristAttraction t1) {
-        /*List<TagsModel> tags = new ArrayList<>();
-        for(String tagName : tagsList) {
-            TagsModel tag = Tags.valueOf(tagName);
-            tags.add(tag);
+    public String updateAttractions(@ModelAttribute TouristAttractionDTO t1) {
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        if (t1.getTagsID() == null) {
+            t1.setTagsID(testList);
         }
-        t1.setTagsList(tags);*/
         touristService.addTouristAttraction(t1);
         return "redirect:/updatedlist";
     }
@@ -72,12 +69,10 @@ private final TouristService touristService;
     @GetMapping("/attractions/edit")
     public String updateAttraction(Model model) {
         List<CityModel> getAllCities = touristService.getAllCities();
-        List<SeasonModel> getAllSeasons = touristService.getAllSeasons();
         List<TagsModel> getAllTags = touristService.getAllTags();
         List<TouristAttraction> getAllAttractions = touristService.getAllAttractions();
 
         TouristAttraction updateAttraction = new TouristAttraction();
-        model.addAttribute("seasonTypes", getAllSeasons);
         model.addAttribute("getAllAttractions", getAllAttractions);
         model.addAttribute("getAllCities", getAllCities);
         model.addAttribute("updateAttraction", updateAttraction);
@@ -93,8 +88,6 @@ private final TouristService touristService;
         updatedAttraction.setName(dto.getName());
         updatedAttraction.setDescription(dto.getDescription());
         updatedAttraction.setImgPath(dto.getImgPath());
-
-        updatedAttraction.setSeason(touristService.getSeasonFromID(dto.getId()));
         updatedAttraction.setCity(touristService.getCityFromID(dto.getCityID()));
 
         List<TagsModel> tags = new ArrayList<>();
@@ -118,12 +111,6 @@ private final TouristService touristService;
         return "updatedlist";
     }
 
-    /*@GetMapping("/seasons/{name}")
-    public String getAttractionBySeason(@PathVariable SeasonModel name, Model model) {
-        List<TouristAttraction> attractionBySeason = touristService.getAttractionBySeason(name);
-        model.addAttribute("attractionBySeason", attractionBySeason);
-        return "attractionBySeason";
-    }*/
 }
 
 
