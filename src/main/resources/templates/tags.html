@@ -17,7 +17,7 @@
     </div>
     <div th:if="${tags}">
       <ul>
-        <li th:each="tag : ${tags}" th:text="${tag.displayName}"></li>
+        <li th:each="tag : ${tags}" th:text="${tag.name}"></li>
       </ul>
     </div>
   </div>

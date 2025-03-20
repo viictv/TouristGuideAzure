@@ -36,11 +36,10 @@ private final TouristService touristService;
         return "error";
     }
 
-    //Sofies cook
-    @GetMapping("/attractions/{name}/tags")
-    public String getTagsByAttractionName(@PathVariable String name, Model model) {
-        TouristAttraction attraction = touristService.getAttractionByName(name);
-        model.addAttribute("tags", attraction.getTagsList());
+    @GetMapping("/attractions/{id}/tags")
+    public String getTagsByAttractionName(@PathVariable int id, Model model) {
+        List<TagsModel> tempList = touristService.getTagsFromAttractionId(id);
+        model.addAttribute("tags", tempList);
         return "tags";  // Den view, hvor tags vises
     }
 
@@ -100,9 +99,9 @@ private final TouristService touristService;
         return "redirect:/updatedlist";
     }
 
-    @PostMapping("/attractions/delete/{name}")
-    public String removeAttraction(@PathVariable String name) {
-        TouristAttraction deleteAttraction = touristService.removeAttraction(name);
+    @PostMapping("/attractions/delete/{id}")
+    public String removeAttraction(@PathVariable int id) {
+        touristService.removeAttraction(id);
         return "redirect:/attractions";
     }
 

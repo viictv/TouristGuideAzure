@@ -112,19 +112,23 @@ public class TouristRepository {
         return templist.get(0);
     }
 
-    public TouristAttraction removeAttraction(String name) {
-        TouristAttraction toDelete = getAttractionByName(name);
-        if (toDelete != null) {
-            int matchingID = getIDFromAttractionName(name);
+    public TouristAttraction getAttractionById (int id) {
+        String sql = "SELECT * FROM attraction WHERE id = ?";
+        List<TouristAttraction> templist = jdbcTemplate.query(sql, new AttractionRowMapper(), id);
 
+        if (templist.isEmpty() || templist == null) return null;
+        return templist.get(0);
+    }
+
+
+
+    public void removeAttraction(int id) {
             String sqlTags = "DELETE FROM attraction_tags WHERE ATTRACTION_ID = ?";
-            jdbcTemplate.update(sqlTags, matchingID);
+            jdbcTemplate.update(sqlTags, id);
 
             String sql = "DELETE FROM attraction WHERE ID = ?";
-            jdbcTemplate.update(sql, matchingID);
-        }
+            jdbcTemplate.update(sql, id);
 
-        return toDelete;
     }
 
 
@@ -170,6 +174,23 @@ public class TouristRepository {
                 WHERE TAGS_ID = ?
         """;
         return jdbcTemplate.query(sql, new TagsRowMapper(), id).get(0);
+    }
+
+
+    public List<TagsModel> getTagsFromAttractionId (int id) {
+
+        String sql = """
+                SELECT
+                at.attraction_ID,
+                t.tags_id,
+                t.tags_name
+                FROM attraction_tags at
+                INNER JOIN tags t ON at.tags_ID = t.tags_id
+                WHERE ATTRACTION_ID = ?
+                ORDER BY at.attraction_ID;
+                """;
+        return jdbcTemplate.query(sql, new TagsRowMapper(), id);
+
     }
 
     /*public TouristAttraction updateAttraction (TouristAttraction t1) {
